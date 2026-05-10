@@ -37,11 +37,11 @@ export function Navigation() {
       >
         <motion.a
           href="#inicio"
-          className="inline-flex items-center transition-opacity hover:opacity-90"
+          className="inline-flex max-w-[80px] items-center transition-opacity hover:opacity-90 sm:max-w-[220px] lg:max-w-none"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >
-          <BrandLogo size="navbar" />
+          <BrandLogo size="navbar" className="w-full" />
         </motion.a>
 
         <div className="hidden items-center gap-1 lg:flex">
