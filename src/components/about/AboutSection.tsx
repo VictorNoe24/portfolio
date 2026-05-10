@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 
+import { SectionGlow } from "../ui/SectionGlow";
 import { AboutBio } from "./AboutBio";
 import { AboutHeader } from "./AboutHeader";
 import { AboutHighlightsGrid } from "./AboutHighlightsGrid";
@@ -11,6 +12,7 @@ export function AboutSection() {
 
   return (
     <section id="sobre-mi" className="relative py-20 lg:py-32">
+      <SectionGlow accent="chart-2" anchor="left" />
       <div ref={containerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AboutHeader isInView={isInView} />
 

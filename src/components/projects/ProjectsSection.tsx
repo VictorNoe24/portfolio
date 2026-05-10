@@ -2,6 +2,7 @@ import { AnimatePresence, useInView } from "framer-motion";
 import { useRef } from "react";
 
 import { useProjectGallery } from "../../hooks/useProjectGallery";
+import { SectionGlow } from "../ui/SectionGlow";
 import { ProjectModal } from "./ProjectModal";
 import { ProjectsGrid } from "./ProjectsGrid";
 import { ProjectsHeader } from "./ProjectsHeader";
@@ -21,7 +22,8 @@ export function ProjectsSection() {
 
   return (
     <>
-      <section id="proyectos" className="py-20 lg:py-32">
+      <section id="proyectos" className="relative py-20 lg:py-32">
+        <SectionGlow accent="chart-4" anchor="left" />
         <div ref={containerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ProjectsHeader isInView={isInView} />
           <ProjectsGrid onSelectProject={openProject} />

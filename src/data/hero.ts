@@ -1,6 +1,8 @@
 import { BriefcaseBusiness, FolderGit2, Mail } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import { CV_FILE_PATH, withBase } from "./site";
+
 export interface HeroSocialLink {
   href: string;
   icon: LucideIcon;
@@ -8,8 +10,10 @@ export interface HeroSocialLink {
 }
 
 export interface HeroActionLink {
-  href: `#${string}`;
+  href: string;
   label: string;
+  rel?: string;
+  target?: "_blank" | "_self";
   variant: "primary" | "outline";
 }
 
@@ -25,12 +29,18 @@ export const heroSocialLinks: HeroSocialLink[] = [
 
 export const heroActionLinks: HeroActionLink[] = [
   { href: "#proyectos", label: "Ver Proyectos", variant: "primary" },
-  { href: "#contacto", label: "Contactame", variant: "outline" }
+  {
+    href: CV_FILE_PATH,
+    label: "Ver CV",
+    variant: "outline",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }
 ];
 
 export const heroProfile = {
   alt: "Victor Noe Flores Toledo - Desarrollador Full Stack",
-  imageSrc: "/images/profile.jpg",
+  imageSrc: withBase("/images/profile.jpg"),
   initials: "VF",
   status: "Disponible para proyectos",
   subtitle: "Desarrollador Full Stack / Lider Tecnico",

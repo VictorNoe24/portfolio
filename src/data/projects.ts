@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import { withBase } from "./site";
+
 export interface ProjectImage {
   alt: string;
   src: string;
@@ -43,11 +45,20 @@ export const projects: Project[] = [
       "Landing page profesional para negocio de construccion con diseno moderno, formulario de contacto con Supabase y WhatsApp integration.",
     longDescription:
       "Desarrollo completo de una landing page para un maestro de obra en Mexico. Incluye diseno responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integracion con WhatsApp para comunicacion directa, seccion de servicios con galeria, testimonios y sistema de cotizaciones.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [
-      { src: "/images/projects/noe-flores-hero.png", alt: "Hero Section con estadisticas" },
-      { src: "/images/projects/noe-flores-services.png", alt: "Seccion de Servicios" },
-      { src: "/images/projects/noe-flores-contact.png", alt: "Formulario de Contacto" }
+      {
+        src: withBase("/images/projects/noe-flores-hero.png"),
+        alt: "Hero Section con estadisticas"
+      },
+      {
+        src: withBase("/images/projects/noe-flores-services.png"),
+        alt: "Seccion de Servicios"
+      },
+      {
+        src: withBase("/images/projects/noe-flores-contact.png"),
+        alt: "Formulario de Contacto"
+      }
     ],
     icon: Globe,
     technologies: ["Astro", "Supabase", "TailwindCSS", "TypeScript"],
@@ -69,7 +80,7 @@ export const projects: Project[] = [
       "Sistema completo de gestion de relaciones con clientes. Incluye gestion de usuarios, pasarelas de pago, integracion con Dropbox y editor de documentos legales.",
     longDescription:
       "Sistema CRM desarrollado para Au Pair Mexico con multiples modulos de gestion empresarial. Implementa sistema de monetizacion con Stripe y OpenPay, editor de documentos similar a Google Docs, exportacion avanzada a Excel y conexion OAuth con Dropbox para gestion de archivos.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Layers,
     technologies: ["Laravel", "React.js", "Stripe", "OpenPay", "Dropbox OAuth", "MySQL"],
@@ -89,7 +100,7 @@ export const projects: Project[] = [
       "Plataforma para conectar Au Pairs con familias anfitrionas. Sistema de matching inteligente y comunicacion integrada.",
     longDescription:
       "Plataforma web completa para conectar Au Pairs con familias anfitrionas en todo el mundo. Incluye sistema de matching inteligente basado en preferencias, monetizacion mediante creditos, chat integrado para comunicacion segura y panel de administracion completo.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Globe,
     technologies: ["Spring Boot", "Vue.js", "Stripe", "MySQL", "WebSockets"],
@@ -109,7 +120,7 @@ export const projects: Project[] = [
       "Plataforma completa de comercio electronico para venta de productos artesanales. App movil y web con notificaciones en tiempo real.",
     longDescription:
       "Solucion e-commerce completa que incluye aplicacion movil para iOS y Android desarrollada en Flutter, panel web de administracion, sistema de notificaciones push en tiempo real, integracion de pagos con Stripe y diseno UX/UI profesional en Figma.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Smartphone,
     technologies: ["Flutter", "Firebase", "Stripe", "Node.js", "Figma"],
@@ -129,7 +140,7 @@ export const projects: Project[] = [
       "Sistema de monitoreo ambiental para el Hospital del Nino Morelense. Control de temperatura y humedad en tiempo real.",
     longDescription:
       "Sistema IoT desarrollado para el Hospital del Nino Morelense enfocado en el monitoreo ambiental de areas criticas. Utiliza sensores ESP32 para medir temperatura y humedad, con automatizacion inteligente por umbrales y alertas via Telegram.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Server,
     technologies: ["ESP32", "PHP", "Webhooks", "Telegram API", "MySQL"],
@@ -149,7 +160,7 @@ export const projects: Project[] = [
       "Aplicacion movil para generacion de presupuestos profesionales de forma sencilla y rapida.",
     longDescription:
       "Aplicacion movil disenada para usuarios sin conocimientos tecnicos que necesitan generar presupuestos profesionales. Incluye generacion automatica de PDF, calculos automatizados, plantillas personalizables e interfaz intuitiva.",
-    thumbnail: "/images/projects/noe-flores-hero.png",
+    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Smartphone,
     technologies: ["React Native", "Expo", "PDF Generation", "TypeScript"],

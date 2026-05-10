@@ -13,6 +13,8 @@ export function HeroActions() {
             size="lg"
             variant={link.variant}
             className="w-full sm:w-auto"
+            target={link.target}
+            rel={link.rel}
           >
             {link.label}
           </ButtonLink>

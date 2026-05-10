@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import { navLinks } from "../../data/site";
+import { CV_FILE_PATH } from "../../data/site";
 import { useNavigationState } from "../../hooks/useNavigationState";
 
 const HEADER_TRANSITION = {
@@ -75,7 +76,9 @@ export function Navigation() {
         </div>
 
         <motion.a
-          href="#contacto"
+          href={CV_FILE_PATH}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_12px_30px_-18px_var(--color-primary)] transition-colors hover:bg-primary/90 lg:inline-flex"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +86,7 @@ export function Navigation() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >
-          Contactame
+          Ver CV
         </motion.a>
 
         <motion.button
@@ -167,7 +170,9 @@ export function Navigation() {
               })}
 
               <motion.a
-                href="#contacto"
+                href={CV_FILE_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeMobileMenu}
                 className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
                 variants={{
@@ -175,7 +180,7 @@ export function Navigation() {
                   visible: { opacity: 1, x: 0 }
                 }}
               >
-                Contactame
+                Ver CV
               </motion.a>
             </motion.div>
           </motion.div>
