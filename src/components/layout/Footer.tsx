@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import { GitHubIcon, LinkedInIcon } from "../ui/icons";
 import { BrandLogo } from "../ui/BrandLogo";
-import { SITE_NAME, navLinks } from "../../data/site";
+import { HOME_PAGE_PATH, SITE_NAME, navLinks } from "../../data/site";
 import { useFooterState } from "../../hooks/useFooterState";
 
 const socialLinks = [
@@ -26,7 +26,7 @@ export function Footer() {
             transition={{ duration: 0.5 }}
           >
             <motion.a
-              href="#inicio"
+              href={HOME_PAGE_PATH}
               className="inline-flex items-center transition-opacity hover:opacity-90"
               whileHover={{ scale: 1.03 }}
             >
@@ -135,7 +135,7 @@ export function Footer() {
           </p>
 
           <motion.a
-            href="#inicio"
+            href={HOME_PAGE_PATH}
             className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             whileHover={{ y: -2 }}
           >
