@@ -2,6 +2,7 @@
 import { AboutSection } from "../components/about/AboutSection";
 import { ExperienceSection } from "../components/experience/ExperienceSection";
 import { HeroSection } from "../components/hero/HeroSection";
+import { ProjectsSection } from "../components/projects/ProjectsSection";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,10 +10,10 @@ import Layout from "../layouts/Layout.astro";
 	<HeroSection client:load />
 	<AboutSection client:visible />
 	<ExperienceSection client:visible />
+	<ProjectsSection client:visible />
 
 	{
 		[
-			["proyectos", "Proyectos"],
 			["habilidades", "Habilidades"],
 			["educacion", "Educacion"],
 			["contacto", "Contacto"]
