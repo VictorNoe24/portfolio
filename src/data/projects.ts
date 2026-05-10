@@ -37,6 +37,13 @@ export const projectsContent = {
     "Una seleccion de proyectos que demuestran mi experiencia en desarrollo web, movil y sistemas IoT."
 };
 
+export const projectsArchiveContent = {
+  eyebrow: "Archivo",
+  title: "Explora mas proyectos",
+  description:
+    "Una vista mas completa de productos, plataformas y experimentos construidos en web, mobile e integraciones."
+};
+
 export const projects: Project[] = [
   {
     id: "noe-flores-landing",
@@ -173,4 +180,9 @@ export const projects: Project[] = [
       "Exportacion y compartir"
     ]
   }
+];
+
+export const projectCategories = [
+  "Todos",
+  ...Array.from(new Set(projects.map((project) => project.category)))
 ];
