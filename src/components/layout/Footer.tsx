@@ -9,7 +9,7 @@ import { useFooterState } from "../../hooks/useFooterState";
 const socialLinks = [
   { icon: GitHubIcon, href: "https://github.com/VictorNoe24", label: "GitHub" },
   { icon: LinkedInIcon, href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:", label: "Email" }
+  { icon: Mail, href: "mailto:noeflo60@gmail.com", label: "Correo" }
 ];
 
 export function Footer() {
@@ -102,7 +102,7 @@ export function Footer() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="mb-4 text-lg font-semibold text-foreground">Mas</h2>
+            <h2 className="mb-4 text-lg font-semibold text-foreground">Más</h2>
             <ul className="space-y-3">
               {navLinks.slice(4).map((link, index) => (
                 <motion.li

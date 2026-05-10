@@ -21,9 +21,9 @@ export interface SkillCategory {
 
 export const skillsContent = {
   description:
-    "Las tecnologias y herramientas que domino para construir soluciones completas de principio a fin.",
+    "Las tecnologías y herramientas que domino para construir soluciones completas de principio a fin.",
   eyebrow: "Habilidades",
-  title: "Stack tecnologico"
+  title: "Stack tecnológico"
 };
 
 export const skillCategories: SkillCategory[] = [
@@ -80,13 +80,13 @@ export const skillCategories: SkillCategory[] = [
     ]
   },
   {
-    title: "Buenas Practicas",
+    title: "Buenas prácticas",
     icon: Sparkles,
     skills: [
-      { name: "Codigo Limpio", level: 90 },
+      { name: "Código limpio", level: 90 },
       { name: "MVC Architecture", level: 95 },
       { name: "Testing", level: 75 },
-      { name: "Documentacion", level: 85 }
+      { name: "Documentación", level: 85 }
     ]
   }
 ];

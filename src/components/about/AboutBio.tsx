@@ -23,8 +23,8 @@ export function AboutBio({ isInView }: AboutBioProps) {
 
       <p className="text-lg leading-relaxed text-muted-foreground">
         Actualmente me enfoco en construir soluciones escalables, mantenibles y
-        funcionales, con atencion a la calidad del codigo, rendimiento y experiencia de
-        usuario. Me especializo en tecnologias como{" "}
+        funcionales, con atención a la calidad del código, el rendimiento y la
+        experiencia de usuario. Me especializo en tecnologías como{" "}
         <span className="font-medium text-primary">Laravel</span>,{" "}
         <span className="font-medium text-primary">React</span>,{" "}
         <span className="font-medium text-primary">Vue</span>,{" "}
