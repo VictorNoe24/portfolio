@@ -3,6 +3,7 @@ import { AboutSection } from "../components/about/AboutSection";
 import { ExperienceSection } from "../components/experience/ExperienceSection";
 import { HeroSection } from "../components/hero/HeroSection";
 import { ProjectsSection } from "../components/projects/ProjectsSection";
+import { SkillsSection } from "../components/skills/SkillsSection";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -11,10 +12,10 @@ import Layout from "../layouts/Layout.astro";
 	<AboutSection client:visible />
 	<ExperienceSection client:visible />
 	<ProjectsSection client:visible />
+	<SkillsSection client:visible />
 
 	{
 		[
-			["habilidades", "Habilidades"],
 			["educacion", "Educacion"],
 			["contacto", "Contacto"]
 		].map(([id, title]) => (
