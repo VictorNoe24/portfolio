@@ -2,6 +2,7 @@ import { ArrowUp, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { GitHubIcon, LinkedInIcon } from "../ui/icons";
+import { BrandLogo } from "../ui/BrandLogo";
 import { SITE_NAME, navLinks } from "../../data/site";
 import { useFooterState } from "../../hooks/useFooterState";
 
@@ -26,10 +27,10 @@ export function Footer() {
           >
             <motion.a
               href="#inicio"
-              className="inline-block text-3xl font-black tracking-tight text-foreground transition-colors hover:text-primary"
+              className="inline-flex items-center transition-opacity hover:opacity-90"
               whileHover={{ scale: 1.03 }}
             >
-              {"<VF />"}
+              <BrandLogo size="footer" />
             </motion.a>
 
             <p className="mt-4 max-w-md text-lg leading-8 text-muted-foreground">
