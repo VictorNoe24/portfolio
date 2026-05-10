@@ -131,7 +131,7 @@ export function Footer() {
           transition={{ delay: 0.5 }}
         >
           <p className="text-sm text-muted-foreground">
-            {currentYear} {SITE_NAME}. Todos los derechos reservados.
+            {currentYear} {SITE_NAME}.
           </p>
 
           <motion.a
