@@ -1,11 +1,12 @@
-import { BriefcaseBusiness, FolderGit2, Mail } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Mail } from "lucide-react";
+import type { ComponentType } from "react";
 
+import { GitHubIcon, LinkedInIcon } from "../components/ui/icons";
 import { CV_FILE_PATH, withBase } from "./site";
 
 export interface HeroSocialLink {
   href: string;
-  icon: LucideIcon;
+  icon: ComponentType<{ className?: string }>;
   label: string;
 }
 
@@ -18,10 +19,10 @@ export interface HeroActionLink {
 }
 
 export const heroSocialLinks: HeroSocialLink[] = [
-  { href: "https://github.com/victornoe", icon: FolderGit2, label: "GitHub" },
+  { href: "https://github.com/victornoe", icon: GitHubIcon, label: "GitHub" },
   {
     href: "https://linkedin.com/in/victornoe",
-    icon: BriefcaseBusiness,
+    icon: LinkedInIcon,
     label: "LinkedIn"
   },
   { href: "mailto:noeflo60@gmail.com", icon: Mail, label: "Email" }

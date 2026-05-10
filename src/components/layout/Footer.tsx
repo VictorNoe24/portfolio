@@ -1,13 +1,14 @@
-import { ArrowUp, BriefcaseBusiness, FolderGit2, Mail } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { GitHubIcon, LinkedInIcon } from "../ui/icons";
 import { SITE_NAME, navLinks } from "../../data/site";
 import { useFooterState } from "../../hooks/useFooterState";
 
 const socialLinks = [
-  { icon: FolderGit2, href: "https://github.com/victornoe", label: "GitHub" },
-  { icon: BriefcaseBusiness, href: "https://linkedin.com/in/victornoe", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:noeflo60@gmail.com", label: "Email" }
+  { icon: GitHubIcon, href: "https://github.com/VictorNoe24", label: "GitHub" },
+  { icon: LinkedInIcon, href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:", label: "Email" }
 ];
 
 export function Footer() {
