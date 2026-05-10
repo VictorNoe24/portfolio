@@ -42,9 +42,9 @@ export const projects: Project[] = [
     id: "noe-flores-landing",
     title: "Landing Page - Noe Flores Aviles",
     description:
-      "Landing page profesional para negocio de construccion con diseno moderno, formulario de contacto con Supabase y WhatsApp integration.",
+      "Landing page profesional para negocio de construccion con diseño moderno, formulario de contacto con Supabase y WhatsApp integration.",
     longDescription:
-      "Desarrollo completo de una landing page para un maestro de obra en Mexico. Incluye diseno responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integracion con WhatsApp para comunicacion directa, seccion de servicios con galeria, testimonios y sistema de cotizaciones.",
+      "Desarrollo completo de una landing page para un maestro de obra en Mexico. Incluye diseño responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integracion con WhatsApp para comunicacion directa, seccion de servicios con galeria, testimonios y sistema de cotizaciones.",
     thumbnail: withBase("/images/projects/noe-flores-hero.webp"),
     images: [
       {
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     technologies: ["Astro", "Supabase", "TailwindCSS", "TypeScript"],
     category: "Landing Page",
     highlights: [
-      "Diseno dark/light mode",
+      "Diseño dark/light mode",
       "Formulario conectado con Supabase",
       "Integracion WhatsApp",
       "SEO optimizado",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     description:
       "Plataforma completa de comercio electronico para venta de productos artesanales. App movil y web con notificaciones en tiempo real.",
     longDescription:
-      "Solucion e-commerce completa que incluye aplicacion movil para iOS y Android desarrollada en Flutter, panel web de administracion, sistema de notificaciones push en tiempo real, integracion de pagos con Stripe y diseno UX/UI profesional en Figma.",
+      "Solucion e-commerce completa que incluye aplicacion movil para iOS y Android desarrollada en Flutter, panel web de administracion, sistema de notificaciones push en tiempo real, integracion de pagos con Stripe y diseño UX/UI profesional en Figma.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Smartphone,
@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "App movil iOS y Android",
       "Notificaciones push en tiempo real",
       "Integracion de pagos Stripe",
-      "Diseno UX/UI en Figma",
+      "Diseño UX/UI en Figma",
       "Panel de administracion web"
     ]
   },

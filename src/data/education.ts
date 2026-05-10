@@ -55,7 +55,7 @@ export const certifications: string[] = [
   "Flutter Mobile Development",
   "Bases de Datos SQL Avanzado",
   "Metodologias Agiles (Scrum)",
-  "Diseno UX/UI con Figma"
+  "Diseño UX/UI con Figma"
 ];
 
 export const educationStats: EducationStat[] = [

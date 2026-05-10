@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { navLinks } from "../../data/site";
 import { CV_FILE_PATH } from "../../data/site";
 import { useNavigationState } from "../../hooks/useNavigationState";
+import { BrandLogo } from "../ui/BrandLogo";
 
 const HEADER_TRANSITION = {
   duration: 0.6,
@@ -36,11 +37,11 @@ export function Navigation() {
       >
         <motion.a
           href="#inicio"
-          className="text-2xl font-black tracking-tight text-foreground transition-colors hover:text-primary"
+          className="inline-flex items-center transition-opacity hover:opacity-90"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >
-          {"<VF />"}
+          <BrandLogo size="navbar" />
         </motion.a>
 
         <div className="hidden items-center gap-1 lg:flex">
