@@ -19,13 +19,13 @@ export interface HeroActionLink {
 }
 
 export const heroSocialLinks: HeroSocialLink[] = [
-  { href: "https://github.com/victornoe", icon: GitHubIcon, label: "GitHub" },
+  { href: "https://github.com/VictorNoe24", icon: GitHubIcon, label: "GitHub" },
   {
-    href: "https://linkedin.com/in/victornoe",
+    href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5",
     icon: LinkedInIcon,
     label: "LinkedIn"
   },
-  { href: "mailto:noeflo60@gmail.com", icon: Mail, label: "Email" }
+  { href: "mailto", icon: Mail, label: "Email" }
 ];
 
 export const heroActionLinks: HeroActionLink[] = [
