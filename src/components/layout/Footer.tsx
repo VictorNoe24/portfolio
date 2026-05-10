@@ -2,7 +2,7 @@ import { ArrowUp, BriefcaseBusiness, FolderGit2, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { SITE_NAME, navLinks } from "../../data/site";
-import { useFooterState } from "../../hooks/useFooterState.jsx";
+import { useFooterState } from "../../hooks/useFooterState";
 
 const socialLinks = [
   { icon: FolderGit2, href: "https://github.com/victornoe", label: "GitHub" },

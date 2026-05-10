@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import { navLinks } from "../../data/site";
-import { useNavigationState } from "../../hooks/useNavigationState.jsx";
+import { useNavigationState } from "../../hooks/useNavigationState";
 
 const HEADER_TRANSITION = {
   duration: 0.6,

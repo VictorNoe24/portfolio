@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import { heroProfile } from "../../data/hero";
-import { useProfileImage } from "../../hooks/useProfileImage.jsx";
+import { useProfileImage } from "../../hooks/useProfileImage";
 import { heroFloatingBadgeVariants, heroImageVariants } from "./hero.motion";
 
 export function HeroProfile() {

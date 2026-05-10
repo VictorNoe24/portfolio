@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export function useProfileImage(initialSrc) {
+interface UseProfileImageResult {
+  hasImageError: boolean;
+  imageSrc: string | null;
+  onImageError: () => void;
+}
+
+export function useProfileImage(initialSrc: string): UseProfileImageResult {
   const [hasImageError, setHasImageError] = useState(false);
 
   const handleImageError = () => {

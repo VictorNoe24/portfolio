@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 
 import { navLinks } from "../data/site";
 
-export function useNavigationState() {
+interface UseNavigationStateResult {
+  activeSection: string;
+  closeMobileMenu: () => void;
+  isMobileMenuOpen: boolean;
+  isScrolled: boolean;
+  toggleMobileMenu: () => void;
+}
+
+export function useNavigationState(): UseNavigationStateResult {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
