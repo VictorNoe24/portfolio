@@ -4,8 +4,8 @@ import { useRef } from "react";
 import { useProjectGallery } from "../../hooks/useProjectGallery";
 import { SectionGlow } from "../ui/SectionGlow";
 import { ProjectModal } from "./ProjectModal";
-import { ProjectsGrid } from "./ProjectsGrid";
 import { ProjectsHeader } from "./ProjectsHeader";
+import { ProjectsLandingGrid } from "./ProjectsLandingGrid";
 
 export function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -26,7 +26,7 @@ export function ProjectsSection() {
         <SectionGlow accent="chart-4" anchor="left" />
         <div ref={containerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ProjectsHeader isInView={isInView} />
-          <ProjectsGrid onSelectProject={openProject} />
+          <ProjectsLandingGrid onSelectProject={openProject} />
         </div>
       </section>
 
