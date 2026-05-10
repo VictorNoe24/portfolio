@@ -1,14 +1,15 @@
 ---
+import { AboutSection } from "../components/about/AboutSection";
 import { HeroSection } from "../components/hero/HeroSection";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
 	<HeroSection client:load />
+	<AboutSection client:visible />
 
 	{
 		[
-			["sobre-mi", "Sobre Mi"],
 			["experiencia", "Experiencia"],
 			["proyectos", "Proyectos"],
 			["habilidades", "Habilidades"],
