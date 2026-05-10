@@ -26,3 +26,4 @@ export const SITE_TITLE = "Víctor Noé Flores Toledo | Full Stack Developer";
 export const SITE_DESCRIPTION =
   "Portafolio profesional de Víctor Noé Flores Toledo, desarrollador full stack enfocado en crear productos digitales modernos y accesibles.";
 export const CV_FILE_PATH = withBase("/documents/cv/victor-noe-flores-toledo-cv.pdf");
+export const PROJECTS_PAGE_PATH = withBase("/proyectos/");
