@@ -2,6 +2,7 @@ import { ArrowRight, FolderOpenDot } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { projects } from "../../data/projects";
+import { PROJECTS_PAGE_PATH } from "../../data/site";
 import { ButtonLink } from "../ui/Button";
 
 export function ProjectsArchivePanel() {
@@ -53,7 +54,7 @@ export function ProjectsArchivePanel() {
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/proyectos" size="lg">
+          <ButtonLink href={PROJECTS_PAGE_PATH} size="lg">
             Ver más proyectos
             <ArrowRight className="ml-2 h-4 w-4" />
           </ButtonLink>
