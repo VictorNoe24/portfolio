@@ -19,7 +19,7 @@ export function useNavigationState(): UseNavigationStateResult {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 32);
 
-      const sections = navLinks.map((link) => link.href.replace("#", ""));
+      const sections = navLinks.map((link) => link.sectionId);
       for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
         if (!element) continue;

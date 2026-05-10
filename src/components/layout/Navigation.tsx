@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import { navLinks } from "../../data/site";
-import { CV_FILE_PATH } from "../../data/site";
+import { CV_FILE_PATH, HOME_PAGE_PATH, navLinks } from "../../data/site";
 import { useNavigationState } from "../../hooks/useNavigationState";
 import { BrandLogo } from "../ui/BrandLogo";
 
@@ -36,7 +35,7 @@ export function Navigation() {
         aria-label="Principal"
       >
         <motion.a
-          href="#inicio"
+          href={HOME_PAGE_PATH}
           className="inline-flex max-w-[80px] items-center transition-opacity hover:opacity-90 sm:max-w-[220px] lg:max-w-none"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
@@ -46,8 +45,7 @@ export function Navigation() {
 
         <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link, index) => {
-            const sectionId = link.href.replace("#", "");
-            const isActive = activeSection === sectionId;
+            const isActive = activeSection === link.sectionId;
 
             return (
               <motion.a
@@ -146,8 +144,7 @@ export function Navigation() {
               }}
             >
               {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "");
-                const isActive = activeSection === sectionId;
+                const isActive = activeSection === link.sectionId;
 
                 return (
                   <motion.a
