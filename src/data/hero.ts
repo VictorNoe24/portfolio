@@ -25,7 +25,7 @@ export const heroSocialLinks: HeroSocialLink[] = [
     icon: LinkedInIcon,
     label: "LinkedIn"
   },
-  { href: "mailto", icon: Mail, label: "Email" }
+  { href: "mailto:noeflo60@gmail.com", icon: Mail, label: "Correo" }
 ];
 
 export const heroActionLinks: HeroActionLink[] = [
@@ -40,15 +40,15 @@ export const heroActionLinks: HeroActionLink[] = [
 ];
 
 export const heroProfile = {
-  alt: "Victor Noe Flores Toledo - Desarrollador Full Stack",
+  alt: "Víctor Noé Flores Toledo - Desarrollador Full Stack",
   imageSrc: withBase("/images/profile.webp"),
   initials: "VF",
   status: "Disponible para proyectos",
-  subtitle: "Desarrollador Full Stack / Lider Tecnico",
+  subtitle: "Desarrollador Full Stack / Líder técnico",
   title: "Hola, soy",
-  highlightedName: "Victor Noe",
+  highlightedName: "Víctor Noé",
   summary:
-    "Construyo aplicaciones web y moviles escalables con Laravel, React, Vue y Flutter. Enfocado en crear soluciones funcionales con codigo limpio y experiencia de usuario excepcional.",
+    "Construyo aplicaciones web y móviles escalables con Laravel, React, Vue y Flutter. Enfocado en crear soluciones funcionales con código limpio y una experiencia de usuario excepcional.",
   topBadge: "Full Stack",
-  bottomBadge: "+3 años exp"
+  bottomBadge: "+3 años de experiencia"
 };

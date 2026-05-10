@@ -178,7 +178,7 @@ export function ProjectModal({
           <p className="mb-6 text-muted-foreground">{project.longDescription}</p>
 
           <div className="mb-6">
-            <h4 className="mb-3 text-sm font-semibold text-foreground">Funcionalidades Principales</h4>
+            <h4 className="mb-3 text-sm font-semibold text-foreground">Funcionalidades principales</h4>
             <motion.ul className="grid gap-2 sm:grid-cols-2" initial="hidden" animate="visible" variants={projectModalListVariants}>
               {project.highlights.map((highlight) => (
                 <motion.li
@@ -194,7 +194,7 @@ export function ProjectModal({
           </div>
 
           <div className="mb-6">
-            <h4 className="mb-3 text-sm font-semibold text-foreground">Tecnologias Utilizadas</h4>
+            <h4 className="mb-3 text-sm font-semibold text-foreground">Tecnologías utilizadas</h4>
             <motion.div className="flex flex-wrap gap-2" initial="hidden" animate="visible" variants={projectsTechVariants}>
               {project.technologies.map((technology) => (
                 <motion.span
@@ -232,7 +232,7 @@ export function ProjectModal({
                   variant="outline"
                 >
                   <FolderGit2 className="mr-2 h-4 w-4" />
-                  Ver Codigo
+                  Ver código
                 </ButtonLink>
               </motion.div>
             ) : null}

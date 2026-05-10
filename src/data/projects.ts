@@ -34,37 +34,37 @@ export const projectsContent = {
   eyebrow: "Proyectos",
   title: "Trabajo seleccionado",
   description:
-    "Una seleccion de proyectos que demuestran mi experiencia en desarrollo web, movil y sistemas IoT."
+    "Una selección de proyectos que demuestran mi experiencia en desarrollo web, móvil y sistemas IoT."
 };
 
 export const projectsArchiveContent = {
   eyebrow: "Archivo",
-  title: "Explora mas proyectos",
+  title: "Explora más proyectos",
   description:
-    "Una vista mas completa de productos, plataformas y experimentos construidos en web, mobile e integraciones."
+    "Una vista más completa de productos, plataformas y experimentos construidos para web, móvil e integraciones."
 };
 
 export const projects: Project[] = [
   {
     id: "noe-flores-landing",
-    title: "Landing Page - Noe Flores Aviles",
+    title: "Landing Page - Noé Flores Avilés",
     description:
-      "Landing page profesional para negocio de construccion con diseño moderno, formulario de contacto con Supabase y WhatsApp integration.",
+      "Landing page profesional para un negocio de construcción, con diseño moderno, formulario de contacto con Supabase e integración con WhatsApp.",
     longDescription:
-      "Desarrollo completo de una landing page para un maestro de obra en Mexico. Incluye diseño responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integracion con WhatsApp para comunicacion directa, seccion de servicios con galeria, testimonios y sistema de cotizaciones.",
+      "Desarrollo completo de una landing page para un maestro de obra en México. Incluye diseño responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integración con WhatsApp para comunicación directa, sección de servicios con galería, testimonios y sistema de cotizaciones.",
     thumbnail: withBase("/images/projects/noe-flores-hero.webp"),
     images: [
       {
         src: withBase("/images/projects/noe-flores-hero.webp"),
-        alt: "Hero Section con estadisticas"
+        alt: "Hero section con estadísticas"
       },
       {
         src: withBase("/images/projects/noe-flores-services.webp"),
-        alt: "Seccion de Servicios"
+        alt: "Sección de servicios"
       },
       {
         src: withBase("/images/projects/noe-flores-contact.webp"),
-        alt: "Formulario de Contacto"
+        alt: "Formulario de contacto"
       }
     ],
     icon: Globe,
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     highlights: [
       "Diseño dark/light mode",
       "Formulario conectado con Supabase",
-      "Integracion WhatsApp",
+      "Integración con WhatsApp",
       "SEO optimizado",
       "100% responsivo"
     ],
@@ -82,21 +82,21 @@ export const projects: Project[] = [
   },
   {
     id: "crm-empresarial",
-    title: "CRM Empresarial - Au Pair Mexico",
+    title: "CRM Empresarial - Au Pair México",
     description:
-      "Sistema completo de gestion de relaciones con clientes. Incluye gestion de usuarios, pasarelas de pago, integracion con Dropbox y editor de documentos legales.",
+      "Sistema completo de gestión de relaciones con clientes. Incluye gestión de usuarios, pasarelas de pago, integración con Dropbox y editor de documentos legales.",
     longDescription:
-      "Sistema CRM desarrollado para Au Pair Mexico con multiples modulos de gestion empresarial. Implementa sistema de monetizacion con Stripe y OpenPay, editor de documentos similar a Google Docs, exportacion avanzada a Excel y conexion OAuth con Dropbox para gestion de archivos.",
+      "Sistema CRM desarrollado para Au Pair México con múltiples módulos de gestión empresarial. Implementa un sistema de monetización con Stripe y OpenPay, editor de documentos similar a Google Docs, exportación avanzada a Excel y conexión OAuth con Dropbox para la gestión de archivos.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Layers,
     technologies: ["Laravel", "React.js", "Stripe", "OpenPay", "Dropbox OAuth", "MySQL"],
     category: "Web App",
     highlights: [
-      "Sistema de monetizacion con Stripe",
+      "Sistema de monetización con Stripe",
       "Editor de documentos tipo Google Docs",
-      "Exportacion avanzada a Excel",
-      "Integracion OAuth con Dropbox",
+      "Exportación avanzada a Excel",
+      "Integración OAuth con Dropbox",
       "Arquitectura modular y escalable"
     ]
   },
@@ -104,9 +104,9 @@ export const projects: Project[] = [
     id: "match-au-pairs",
     title: "Plataforma Match Au Pairs",
     description:
-      "Plataforma para conectar Au Pairs con familias anfitrionas. Sistema de matching inteligente y comunicacion integrada.",
+      "Plataforma para conectar Au Pairs con familias anfitrionas. Sistema de matching inteligente y comunicación integrada.",
     longDescription:
-      "Plataforma web completa para conectar Au Pairs con familias anfitrionas en todo el mundo. Incluye sistema de matching inteligente basado en preferencias, monetizacion mediante creditos, chat integrado para comunicacion segura y panel de administracion completo.",
+      "Plataforma web completa para conectar Au Pairs con familias anfitrionas en todo el mundo. Incluye un sistema de matching inteligente basado en preferencias, monetización mediante créditos, chat integrado para comunicación segura y panel de administración completo.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Globe,
@@ -114,39 +114,39 @@ export const projects: Project[] = [
     category: "Web Platform",
     highlights: [
       "Sistema de matching inteligente",
-      "Monetizacion con creditos",
+      "Monetización con créditos",
       "Chat integrado en tiempo real",
-      "Panel de administracion",
-      "Notificaciones automaticas"
+      "Panel de administración",
+      "Notificaciones automáticas"
     ]
   },
   {
     id: "ecommerce-crochet",
     title: "E-commerce Crochet",
     description:
-      "Plataforma completa de comercio electronico para venta de productos artesanales. App movil y web con notificaciones en tiempo real.",
+      "Plataforma completa de comercio electrónico para venta de productos artesanales. App móvil y web con notificaciones en tiempo real.",
     longDescription:
-      "Solucion e-commerce completa que incluye aplicacion movil para iOS y Android desarrollada en Flutter, panel web de administracion, sistema de notificaciones push en tiempo real, integracion de pagos con Stripe y diseño UX/UI profesional en Figma.",
+      "Solución e-commerce completa que incluye una aplicación móvil para iOS y Android desarrollada en Flutter, panel web de administración, sistema de notificaciones push en tiempo real, integración de pagos con Stripe y diseño UX/UI profesional en Figma.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Smartphone,
     technologies: ["Flutter", "Firebase", "Stripe", "Node.js", "Figma"],
     category: "Mobile & Web",
     highlights: [
-      "App movil iOS y Android",
+      "App móvil para iOS y Android",
       "Notificaciones push en tiempo real",
-      "Integracion de pagos Stripe",
+      "Integración de pagos con Stripe",
       "Diseño UX/UI en Figma",
-      "Panel de administracion web"
+      "Panel de administración web"
     ]
   },
   {
     id: "iot-hospitalario",
     title: "Sistema IoT Hospitalario",
     description:
-      "Sistema de monitoreo ambiental para el Hospital del Nino Morelense. Control de temperatura y humedad en tiempo real.",
+      "Sistema de monitoreo ambiental para el Hospital del Niño Morelense. Control de temperatura y humedad en tiempo real.",
     longDescription:
-      "Sistema IoT desarrollado para el Hospital del Nino Morelense enfocado en el monitoreo ambiental de areas criticas. Utiliza sensores ESP32 para medir temperatura y humedad, con automatizacion inteligente por umbrales y alertas via Telegram.",
+      "Sistema IoT desarrollado para el Hospital del Niño Morelense, enfocado en el monitoreo ambiental de áreas críticas. Utiliza sensores ESP32 para medir temperatura y humedad, con automatización inteligente por umbrales y alertas vía Telegram.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Server,
@@ -155,29 +155,29 @@ export const projects: Project[] = [
     highlights: [
       "Monitoreo en tiempo real 24/7",
       "Control remoto de dispositivos",
-      "Alertas automaticas via Telegram",
-      "Automatizacion por umbrales",
-      "Dashboard de visualizacion"
+      "Alertas automáticas vía Telegram",
+      "Automatización por umbrales",
+      "Dashboard de visualización"
     ]
   },
   {
     id: "app-presupuestos",
     title: "App Generador de Presupuestos",
     description:
-      "Aplicacion movil para generacion de presupuestos profesionales de forma sencilla y rapida.",
+      "Aplicación móvil para generar presupuestos profesionales de forma sencilla y rápida.",
     longDescription:
-      "Aplicacion movil disenada para usuarios sin conocimientos tecnicos que necesitan generar presupuestos profesionales. Incluye generacion automatica de PDF, calculos automatizados, plantillas personalizables e interfaz intuitiva.",
+      "Aplicación móvil diseñada para usuarios sin conocimientos técnicos que necesitan generar presupuestos profesionales. Incluye generación automática de PDF, cálculos automatizados, plantillas personalizables e interfaz intuitiva.",
     thumbnail: withBase("/images/projects/noe-flores-hero.png"),
     images: [],
     icon: Smartphone,
     technologies: ["React Native", "Expo", "PDF Generation", "TypeScript"],
     category: "Mobile App",
     highlights: [
-      "Generacion automatica de PDF",
-      "Calculos automatizados",
+      "Generación automática de PDF",
+      "Cálculos automatizados",
       "Plantillas personalizables",
-      "Sin conocimientos tecnicos requeridos",
-      "Exportacion y compartir"
+      "Sin conocimientos técnicos requeridos",
+      "Exportación y compartir"
     ]
   }
 ];

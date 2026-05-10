@@ -15,7 +15,7 @@ export function HeroScrollIndicator() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       >
-        <span className="text-sm">Scroll</span>
+        <span className="text-sm">Desplázate</span>
         <ArrowDown className="h-5 w-5" />
       </motion.a>
     </motion.div>

@@ -42,12 +42,12 @@ export function HeroContent() {
         className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground lg:mx-0 lg:text-lg"
         variants={heroItemVariants}
       >
-        Construyo aplicaciones web y moviles escalables con{" "}
+        Construyo aplicaciones web y móviles escalables con{" "}
         <span className="font-medium text-foreground">Laravel</span>,{" "}
         <span className="font-medium text-foreground">React</span>,{" "}
         <span className="font-medium text-foreground">Vue</span> y{" "}
         <span className="font-medium text-foreground">Flutter</span>. Enfocado en crear
-        soluciones funcionales con codigo limpio y experiencia de usuario excepcional.
+        soluciones funcionales con código limpio y una experiencia de usuario excepcional.
       </motion.p>
 
       <motion.div variants={heroItemVariants}>
