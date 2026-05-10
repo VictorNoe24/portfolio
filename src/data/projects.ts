@@ -45,18 +45,18 @@ export const projects: Project[] = [
       "Landing page profesional para negocio de construccion con diseno moderno, formulario de contacto con Supabase y WhatsApp integration.",
     longDescription:
       "Desarrollo completo de una landing page para un maestro de obra en Mexico. Incluye diseno responsivo, formulario de contacto conectado con Supabase para almacenamiento de leads, integracion con WhatsApp para comunicacion directa, seccion de servicios con galeria, testimonios y sistema de cotizaciones.",
-    thumbnail: withBase("/images/projects/noe-flores-hero.png"),
+    thumbnail: withBase("/images/projects/noe-flores-hero.webp"),
     images: [
       {
-        src: withBase("/images/projects/noe-flores-hero.png"),
+        src: withBase("/images/projects/noe-flores-hero.webp"),
         alt: "Hero Section con estadisticas"
       },
       {
-        src: withBase("/images/projects/noe-flores-services.png"),
+        src: withBase("/images/projects/noe-flores-services.webp"),
         alt: "Seccion de Servicios"
       },
       {
-        src: withBase("/images/projects/noe-flores-contact.png"),
+        src: withBase("/images/projects/noe-flores-contact.webp"),
         alt: "Formulario de Contacto"
       }
     ],
