@@ -40,7 +40,7 @@ export const heroActionLinks: HeroActionLink[] = [
 
 export const heroProfile = {
   alt: "Victor Noe Flores Toledo - Desarrollador Full Stack",
-  imageSrc: withBase("/images/profile.jpg"),
+  imageSrc: withBase("/images/profile.webp"),
   initials: "VF",
   status: "Disponible para proyectos",
   subtitle: "Desarrollador Full Stack / Lider Tecnico",
@@ -49,5 +49,5 @@ export const heroProfile = {
   summary:
     "Construyo aplicaciones web y moviles escalables con Laravel, React, Vue y Flutter. Enfocado en crear soluciones funcionales con codigo limpio y experiencia de usuario excepcional.",
   topBadge: "Full Stack",
-  bottomBadge: "+3 anios exp"
+  bottomBadge: "+3 años exp"
 };
