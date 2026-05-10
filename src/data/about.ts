@@ -24,7 +24,7 @@ export const aboutContent = {
 };
 
 export const aboutStats: AboutStat[] = [
-  { value: 3, suffix: "+", label: "Anios de experiencia" },
+  { value: 3, suffix: "+", label: "Años de experiencia" },
   { value: 10, suffix: "+", label: "Proyectos completados" },
   { value: 5, suffix: "+", label: "Tecnologias dominadas" }
 ];
