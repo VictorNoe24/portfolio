@@ -2,6 +2,7 @@ import { withBase } from "../../data/site";
 
 interface BrandLogoProps {
   className?: string;
+  loading?: "eager" | "lazy";
   size?: "footer" | "sm" | "navbar";
 }
 
@@ -15,6 +16,7 @@ const SIZE_STYLES = {
 
 export function BrandLogo({
   className = "",
+  loading = "eager",
   size = "navbar"
 }: BrandLogoProps) {
   return (
@@ -22,7 +24,7 @@ export function BrandLogo({
       src={withBase("/images/logos/logo_vf.webp")}
       alt="VF Logo"
       className={`h-auto w-auto select-none object-contain ${SIZE_STYLES[size]} ${className}`.trim()}
-      loading="eager"
+      loading={loading}
       decoding="async"
     />
   );
