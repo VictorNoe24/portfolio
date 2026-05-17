@@ -30,7 +30,7 @@ export function Footer() {
               className="inline-flex items-center transition-opacity hover:opacity-90"
               whileHover={{ scale: 1.03 }}
             >
-              <BrandLogo size="footer" />
+              <BrandLogo size="footer" loading="lazy" />
             </motion.a>
 
             <p className="mt-4 max-w-md text-lg leading-8 text-muted-foreground">

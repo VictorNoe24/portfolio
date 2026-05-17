@@ -3,13 +3,12 @@ import {
   Database,
   Server,
   Smartphone,
-  Sparkles,
   Wrench
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface SkillItem {
-  level: number;
+  iconSlug: string;
   name: string;
 }
 
@@ -31,71 +30,66 @@ export const skillCategories: SkillCategory[] = [
     title: "Backend",
     icon: Server,
     skills: [
-      { name: "Laravel", level: 95 },
-      { name: "PHP", level: 90 },
-      { name: "Node.js", level: 80 },
-      { name: "Spring Boot", level: 75 },
-      { name: "APIs REST", level: 95 }
+      { name: "Laravel", iconSlug: "laravel" },
+      { name: "PHP", iconSlug: "php" },
+      { name: "Node.js", iconSlug: "nodedotjs" },
+      { name: "Spring Boot", iconSlug: "springboot" },
+      { name: "Express", iconSlug: "express" },
+      { name: "n8n", iconSlug: "n8n" }
     ]
   },
   {
     title: "Frontend",
     icon: Code2,
     skills: [
-      { name: "React", level: 90 },
-      { name: "Vue.js", level: 85 },
-      { name: "Angular", level: 80 },
-      { name: "JavaScript", level: 90 },
-      { name: "TypeScript", level: 85 }
+      { name: "Astro", iconSlug: "astro" },
+      { name: "Next.js", iconSlug: "nextdotjs" },
+      { name: "React", iconSlug: "react" },
+      { name: "Vue.js", iconSlug: "vuedotjs" },
+      { name: "JavaScript", iconSlug: "javascript" },
+      { name: "TypeScript", iconSlug: "typescript" }
     ]
   },
   {
     title: "Mobile",
     icon: Smartphone,
     skills: [
-      { name: "Flutter", level: 85 },
-      { name: "React Native", level: 75 },
-      { name: "Dart", level: 85 }
+      { name: "Flutter", iconSlug: "flutter" },
+      { name: "React Native", iconSlug: "react" },
+      { name: "Dart", iconSlug: "dart" },
+      { name: "Android", iconSlug: "android" }
     ]
   },
   {
     title: "Bases de Datos",
     icon: Database,
     skills: [
-      { name: "MySQL", level: 90 },
-      { name: "PostgreSQL", level: 85 },
-      { name: "Firebase", level: 80 },
-      { name: "SQLite", level: 80 }
+      { name: "MySQL", iconSlug: "mysql" },
+      { name: "PostgreSQL", iconSlug: "postgresql" },
+      { name: "Firebase", iconSlug: "firebase" },
+      { name: "SQLite", iconSlug: "sqlite" }
     ]
   },
   {
     title: "Herramientas",
     icon: Wrench,
     skills: [
-      { name: "Git", level: 90 },
-      { name: "Docker", level: 75 },
-      { name: "Jira", level: 85 },
-      { name: "Figma", level: 80 },
-      { name: "Postman", level: 90 }
+      { name: "Git", iconSlug: "git" },
+      { name: "Docker", iconSlug: "docker" },
+      { name: "Jira", iconSlug: "jira" },
+      { name: "Figma", iconSlug: "figma" },
+      { name: "Postman", iconSlug: "postman" }
     ]
   },
-  {
-    title: "Buenas prácticas",
-    icon: Sparkles,
-    skills: [
-      { name: "Código limpio", level: 90 },
-      { name: "MVC Architecture", level: 95 },
-      { name: "Testing", level: 75 },
-      { name: "Documentación", level: 85 }
-    ]
-  }
 ];
 
 export const techLogos: string[] = [
   "Laravel",
+  "n8n",
+  "Astro",
+  "Next.js",
   "React",
   "Vue.js",
-  "Angular",
   "Flutter",
   "Node.js",
   "PHP",
