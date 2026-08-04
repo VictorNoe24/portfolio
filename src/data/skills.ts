@@ -9,6 +9,7 @@ import type { LucideIcon } from "lucide-react";
 
 export interface SkillItem {
   iconSlug: string;
+  iconWrapperClassName?: string;
   name: string;
 }
 
@@ -34,8 +35,12 @@ export const skillCategories: SkillCategory[] = [
       { name: "PHP", iconSlug: "php" },
       { name: "Node.js", iconSlug: "nodedotjs" },
       { name: "Spring Boot", iconSlug: "springboot" },
-      { name: "Express", iconSlug: "express" },
-      { name: "n8n", iconSlug: "n8n" }
+      {
+        name: "Express",
+        iconSlug: "express",
+        iconWrapperClassName: "rounded-xl bg-white/90 p-2"
+      },
+      { name: "NestJS", iconSlug: "nestjs" }
     ]
   },
   {
@@ -43,7 +48,11 @@ export const skillCategories: SkillCategory[] = [
     icon: Code2,
     skills: [
       { name: "Astro", iconSlug: "astro" },
-      { name: "Next.js", iconSlug: "nextdotjs" },
+      {
+        name: "Next.js",
+        iconSlug: "nextdotjs",
+        iconWrapperClassName: "rounded-xl bg-white/90 p-2"
+      },
       { name: "React", iconSlug: "react" },
       { name: "Vue.js", iconSlug: "vuedotjs" },
       { name: "JavaScript", iconSlug: "javascript" },
@@ -78,14 +87,15 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", iconSlug: "docker" },
       { name: "Jira", iconSlug: "jira" },
       { name: "Figma", iconSlug: "figma" },
-      { name: "Postman", iconSlug: "postman" }
+      { name: "Postman", iconSlug: "postman" },
+      { name: "n8n", iconSlug: "n8n" }
     ]
   },
 ];
 
 export const techLogos: string[] = [
   "Laravel",
-  "n8n",
+  "NestJS",
   "Astro",
   "Next.js",
   "React",
