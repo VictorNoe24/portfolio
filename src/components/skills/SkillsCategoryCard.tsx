@@ -55,13 +55,22 @@ export function SkillsCategoryCard({
               whileHover={{ rotate: 3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
             >
-              <img
-                src={`https://cdn.simpleicons.org/${skill.iconSlug}`}
-                alt={`${skill.name} logo`}
-                className="h-12 w-12 object-contain"
-                loading="lazy"
-                decoding="async"
-              />
+              <div
+                className={[
+                  "flex items-center justify-center transition-transform duration-300",
+                  skill.iconWrapperClassName
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <img
+                  src={`https://cdn.simpleicons.org/${skill.iconSlug}`}
+                  alt={`${skill.name} logo`}
+                  className="h-12 w-12 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </motion.div>
             <span className="mt-2 text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
               {skill.name}

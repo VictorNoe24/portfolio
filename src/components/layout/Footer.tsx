@@ -6,10 +6,31 @@ import { BrandLogo } from "../ui/BrandLogo";
 import { HOME_PAGE_PATH, SITE_NAME, navLinks } from "../../data/site";
 import { useFooterState } from "../../hooks/useFooterState";
 
+const CONTACT_EMAIL = "noeflo60@gmail.com";
+const CONTACT_SUBJECT = "Contacto profesional desde tu portafolio";
+const CONTACT_BODY = `Hola Victor,
+
+Vi tu portafolio y me gustaría conversar contigo sobre una oportunidad.
+
+Motivo del contacto:
+[Vacante / Proyecto / Colaboración]
+
+Empresa o cliente:
+[Nombre]
+
+Detalles:
+[Cuéntame un poco más aquí]
+
+Quedo atento(a) a tu respuesta.
+
+Saludos,`;
+
+const contactMailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(CONTACT_SUBJECT)}&body=${encodeURIComponent(CONTACT_BODY)}`;
+
 const socialLinks = [
   { icon: GitHubIcon, href: "https://github.com/VictorNoe24", label: "GitHub" },
   { icon: LinkedInIcon, href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:noeflo60@gmail.com", label: "Correo" }
+  { icon: Mail, href: contactMailtoHref, label: "Correo" }
 ];
 
 export function Footer() {
@@ -54,8 +75,8 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={link.label === "Correo" ? undefined : "_blank"}
+                  rel={link.label === "Correo" ? undefined : "noreferrer"}
                   aria-label={link.label}
                   className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-muted-foreground transition-all duration-200 hover:bg-primary/10 hover:text-primary"
                   variants={{
