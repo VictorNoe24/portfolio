@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 
-import { heroProfile } from "../../data/hero";
+import type { Locale } from "../../i18n/config";
+import { getHeroProfile } from "../../data/hero";
 import { HeroActions } from "./HeroActions";
 import { HeroSocialLinks } from "./HeroSocialLinks";
 import { heroContainerVariants, heroItemVariants } from "./hero.motion";
 
-export function HeroContent() {
+interface HeroContentProps {
+  locale: Locale;
+}
+
+export function HeroContent({ locale }: HeroContentProps) {
+  const heroProfile = getHeroProfile(locale);
   return (
     <motion.div
       className="order-2 text-center lg:order-1 lg:text-left"
@@ -42,20 +48,15 @@ export function HeroContent() {
         className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground lg:mx-0 lg:text-lg"
         variants={heroItemVariants}
       >
-        Construyo aplicaciones web y móviles escalables con{" "}
-        <span className="font-medium text-foreground">Laravel</span>,{" "}
-        <span className="font-medium text-foreground">React</span>,{" "}
-        <span className="font-medium text-foreground">Vue</span> y{" "}
-        <span className="font-medium text-foreground">Flutter</span>. Enfocado en crear
-        soluciones funcionales con código limpio y una experiencia de usuario excepcional.
+        {heroProfile.summary}
       </motion.p>
 
       <motion.div variants={heroItemVariants}>
-        <HeroSocialLinks />
+        <HeroSocialLinks locale={locale} />
       </motion.div>
 
       <motion.div variants={heroItemVariants}>
-        <HeroActions />
+        <HeroActions locale={locale} />
       </motion.div>
     </motion.div>
   );

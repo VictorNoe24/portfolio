@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 
-import { aboutStats } from "../../data/about";
+import type { Locale } from "../../i18n/config";
+import { getAboutStats } from "../../data/about";
 import { AnimatedCounter } from "./AnimatedCounter";
 
 interface AboutStatsProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function AboutStats({ isInView }: AboutStatsProps) {
+export function AboutStats({ isInView, locale }: AboutStatsProps) {
+  const aboutStats = getAboutStats(locale);
   return (
     <motion.div
       className="grid grid-cols-3 gap-6 border-t border-border pt-6"

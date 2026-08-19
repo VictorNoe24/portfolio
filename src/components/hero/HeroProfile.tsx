@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 
-import { heroProfile } from "../../data/hero";
+import type { Locale } from "../../i18n/config";
+import { getHeroProfile } from "../../data/hero";
 import { useProfileImage } from "../../hooks/useProfileImage";
 import { heroFloatingBadgeVariants, heroImageVariants } from "./hero.motion";
 
-export function HeroProfile() {
+interface HeroProfileProps {
+  locale: Locale;
+}
+
+export function HeroProfile({ locale }: HeroProfileProps) {
+  const heroProfile = getHeroProfile(locale);
   const { hasImageError, imageSrc, onImageError } = useProfileImage(heroProfile.imageSrc);
 
   return (

@@ -1,11 +1,17 @@
 import { ArrowRight, FolderOpenDot } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { projects } from "../../data/projects";
-import { PROJECTS_PAGE_PATH } from "../../data/site";
+import type { Locale } from "../../i18n/config";
+import { getProjects, getProjectsPagePath, getProjectsUiCopy } from "../../data/projects";
 import { ButtonLink } from "../ui/Button";
 
-export function ProjectsArchivePanel() {
+interface ProjectsArchivePanelProps {
+  locale: Locale;
+}
+
+export function ProjectsArchivePanel({ locale }: ProjectsArchivePanelProps) {
+  const projects = getProjects(locale);
+  const ui = getProjectsUiCopy(locale);
   return (
     <motion.div
       className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 lg:p-8"
@@ -22,44 +28,42 @@ export function ProjectsArchivePanel() {
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              Catálogo
+              {ui.archiveEyebrow}
             </p>
             <h3 className="mt-2 text-2xl font-bold text-foreground">
-              Casos reales y soluciones completas
+              {ui.archiveTitle}
             </h3>
           </div>
         </div>
 
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
-          Explora una selección más amplia de proyectos construidos para negocio, producto y
-          operaciones. Cada uno muestra enfoque técnico, decisiones de implementación y
-          resultados aplicados a escenarios reales.
+          {ui.archiveText}
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-border/70 bg-background/30 p-4">
             <p className="text-3xl font-bold text-foreground">{projects.length}</p>
-            <p className="mt-1 text-sm text-muted-foreground">Proyectos publicados</p>
+            <p className="mt-1 text-sm text-muted-foreground">{ui.archiveProjectsMetric}</p>
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/30 p-4">
             <p className="text-3xl font-bold text-foreground">
               {new Set(projects.map((project) => project.category)).size}
             </p>
-            <p className="mt-1 text-sm text-muted-foreground">Categorías activas</p>
+            <p className="mt-1 text-sm text-muted-foreground">{ui.archiveTypesMetric}</p>
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/30 p-4">
             <p className="text-3xl font-bold text-foreground">100%</p>
-            <p className="mt-1 text-sm text-muted-foreground">Enfoque en producto real</p>
+            <p className="mt-1 text-sm text-muted-foreground">{ui.archiveExperienceMetric}</p>
           </div>
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href={PROJECTS_PAGE_PATH} size="lg">
-            Ver más proyectos
+          <ButtonLink href={getProjectsPagePath(locale)} size="lg">
+            {ui.archiveButton}
             <ArrowRight className="ml-2 h-4 w-4" />
           </ButtonLink>
           <ButtonLink href="#experiencia" size="lg" variant="outline">
-            Ver experiencia relacionada
+            {ui.archiveExperienceButton}
           </ButtonLink>
         </div>
       </div>

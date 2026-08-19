@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 
-import { heroActionLinks } from "../../data/hero";
+import type { Locale } from "../../i18n/config";
+import { getHeroActionLinks } from "../../data/hero";
 import { ButtonLink } from "../ui/Button";
 
-export function HeroActions() {
+interface HeroActionsProps {
+  locale: Locale;
+}
+
+export function HeroActions({ locale }: HeroActionsProps) {
+  const heroActionLinks = getHeroActionLinks(locale);
   return (
     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
       {heroActionLinks.map((link) => (

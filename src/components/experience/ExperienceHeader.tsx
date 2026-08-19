@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-import { experienceContent } from "../../data/experience";
+import type { Locale } from "../../i18n/config";
+import { getExperienceContent } from "../../data/experience";
 
 interface ExperienceHeaderProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function ExperienceHeader({ isInView }: ExperienceHeaderProps) {
+export function ExperienceHeader({ isInView, locale }: ExperienceHeaderProps) {
+  const experienceContent = getExperienceContent(locale);
   return (
     <motion.div
       className="max-w-3xl"

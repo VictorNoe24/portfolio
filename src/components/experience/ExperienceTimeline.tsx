@@ -1,15 +1,18 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
 
-import { experiences } from "../../data/experience";
+import type { Locale } from "../../i18n/config";
+import { getExperiences } from "../../data/experience";
 import { ExperienceTimelineItem } from "./ExperienceTimelineItem";
 import { experienceTimelineVariants } from "./experience.motion";
 
 interface ExperienceTimelineProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function ExperienceTimeline({ isInView }: ExperienceTimelineProps) {
+export function ExperienceTimeline({ isInView, locale }: ExperienceTimelineProps) {
+  const experiences = getExperiences(locale);
   const timelineRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,

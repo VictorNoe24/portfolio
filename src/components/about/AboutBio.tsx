@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 
-import { aboutContent } from "../../data/about";
+import type { Locale } from "../../i18n/config";
+import { getAboutContent } from "../../data/about";
 import { AboutStats } from "./AboutStats";
 
 interface AboutBioProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function AboutBio({ isInView }: AboutBioProps) {
+export function AboutBio({ isInView, locale }: AboutBioProps) {
+  const aboutContent = getAboutContent(locale);
   const [firstParagraph, secondParagraph] = aboutContent.paragraphs;
 
   return (
@@ -21,18 +24,9 @@ export function AboutBio({ isInView }: AboutBioProps) {
 
       <p className="text-lg leading-relaxed text-muted-foreground">{secondParagraph}</p>
 
-      <p className="text-lg leading-relaxed text-muted-foreground">
-        Actualmente me enfoco en construir soluciones escalables, mantenibles y
-        funcionales, con atención a la calidad del código, el rendimiento y la
-        experiencia de usuario. Me especializo en tecnologías como{" "}
-        <span className="font-medium text-primary">Laravel</span>,{" "}
-        <span className="font-medium text-primary">React</span>,{" "}
-        <span className="font-medium text-primary">Vue</span>,{" "}
-        <span className="font-medium text-primary">Angular</span> y{" "}
-        <span className="font-medium text-primary">Flutter</span>.
-      </p>
+      <p className="text-lg leading-relaxed text-muted-foreground">{aboutContent.paragraphs[2]}</p>
 
-      <AboutStats isInView={isInView} />
+      <AboutStats isInView={isInView} locale={locale} />
     </motion.div>
   );
 }
