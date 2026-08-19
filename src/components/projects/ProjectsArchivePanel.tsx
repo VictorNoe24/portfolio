@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import type { Locale } from "../../i18n/config";
 import { getProjects, getProjectsPagePath, getProjectsUiCopy } from "../../data/projects";
+import { withSectionHash } from "../../data/site";
 import { ButtonLink } from "../ui/Button";
 
 interface ProjectsArchivePanelProps {
@@ -62,7 +63,7 @@ export function ProjectsArchivePanel({ locale }: ProjectsArchivePanelProps) {
             {ui.archiveButton}
             <ArrowRight className="ml-2 h-4 w-4" />
           </ButtonLink>
-          <ButtonLink href="#experiencia" size="lg" variant="outline">
+          <ButtonLink href={withSectionHash(locale, "experiencia")} size="lg" variant="outline">
             {ui.archiveExperienceButton}
           </ButtonLink>
         </div>
