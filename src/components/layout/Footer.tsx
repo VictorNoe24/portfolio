@@ -1,5 +1,6 @@
 import { ArrowUp, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import type { MouseEvent } from "react";
 
 import type { Locale } from "../../i18n/config";
 import { GitHubIcon, LinkedInIcon } from "../ui/icons";
@@ -23,6 +24,18 @@ export function Footer({ locale }: FooterProps) {
     { icon: Mail, href: contactMailtoHref, label: siteContent.footer.contactLabel }
   ];
   const { currentYear, footerRef, isInView } = useFooterState();
+
+  const handleBackToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window === "undefined") return;
+
+    const currentPath = `${window.location.pathname}${window.location.search}`;
+    const targetPath = getHomePagePath(locale);
+
+    if (currentPath === targetPath) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <footer ref={footerRef} className="border-t border-border bg-card">
@@ -144,6 +157,7 @@ export function Footer({ locale }: FooterProps) {
 
           <motion.a
             href={getHomePagePath(locale)}
+            onClick={handleBackToTop}
             className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             whileHover={{ y: -2 }}
           >

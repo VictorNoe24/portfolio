@@ -8,6 +8,7 @@ import {
   getCurrentLanguageOption,
   getCvFilePath,
   getNavLinks,
+  getSectionIds,
   getSiteContent,
   getHomePagePath
 } from "../../data/site";
@@ -26,6 +27,7 @@ interface NavigationProps {
 
 export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
   const navLinks = getNavLinks(locale);
+  const sectionIds = getSectionIds(locale);
   const siteContent = getSiteContent(locale);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
@@ -35,7 +37,7 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
     isMobileMenuOpen,
     isScrolled,
     toggleMobileMenu
-  } = useNavigationState();
+  } = useNavigationState(sectionIds);
   const currentLanguage = getCurrentLanguageOption(locale);
   const alternateLanguage = getAlternateLanguageOption(locale);
 

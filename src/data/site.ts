@@ -6,6 +6,14 @@ export interface NavLink {
   sectionId: string;
 }
 
+export type SectionKey =
+  | "home"
+  | "about"
+  | "experience"
+  | "projects"
+  | "skills"
+  | "education";
+
 export interface LanguageOption {
   code: "ES" | "EN";
   flag: string;
@@ -41,7 +49,7 @@ interface SiteContent {
     primaryLabel: string;
     viewCv: string;
   };
-  navLinks: Array<{ label: string; sectionId: string }>;
+  navLinks: Array<{ label: string; sectionKey: SectionKey }>;
 }
 
 type PageKey = "home" | "projects";
@@ -79,12 +87,12 @@ const SITE_CONTENT: Record<Locale, SiteContent> = {
       viewCv: "Ver CV"
     },
     navLinks: [
-      { label: "Inicio", sectionId: "inicio" },
-      { label: "Sobre mí", sectionId: "sobre-mi" },
-      { label: "Experiencia", sectionId: "experiencia" },
-      { label: "Proyectos", sectionId: "proyectos" },
-      { label: "Habilidades", sectionId: "habilidades" },
-      { label: "Educación", sectionId: "educacion" }
+      { label: "Inicio", sectionKey: "home" },
+      { label: "Sobre mí", sectionKey: "about" },
+      { label: "Experiencia", sectionKey: "experience" },
+      { label: "Proyectos", sectionKey: "projects" },
+      { label: "Habilidades", sectionKey: "skills" },
+      { label: "Educación", sectionKey: "education" }
     ],
     footer: {
       backToTop: "Volver arriba",
@@ -136,12 +144,12 @@ Saludos,`,
       viewCv: "View resume"
     },
     navLinks: [
-      { label: "Home", sectionId: "inicio" },
-      { label: "About", sectionId: "sobre-mi" },
-      { label: "Experience", sectionId: "experiencia" },
-      { label: "Projects", sectionId: "proyectos" },
-      { label: "Skills", sectionId: "habilidades" },
-      { label: "Education", sectionId: "educacion" }
+      { label: "Home", sectionKey: "home" },
+      { label: "About", sectionKey: "about" },
+      { label: "Experience", sectionKey: "experience" },
+      { label: "Projects", sectionKey: "projects" },
+      { label: "Skills", sectionKey: "skills" },
+      { label: "Education", sectionKey: "education" }
     ],
     footer: {
       backToTop: "Back to top",
@@ -194,11 +202,38 @@ export function withSectionHash(locale: Locale, sectionId: string): string {
   return `${getHomePagePath(locale)}#${sectionId}`;
 }
 
+const SECTION_IDS: Record<Locale, Record<SectionKey, string>> = {
+  es: {
+    home: "inicio",
+    about: "sobre-mi",
+    experience: "experiencia",
+    projects: "proyectos",
+    skills: "habilidades",
+    education: "educacion"
+  },
+  en: {
+    home: "home",
+    about: "about",
+    experience: "experience",
+    projects: "projects",
+    skills: "skills",
+    education: "education"
+  }
+};
+
+export function getSectionId(locale: Locale, sectionKey: SectionKey): string {
+  return SECTION_IDS[locale][sectionKey];
+}
+
+export function getSectionIds(locale: Locale): string[] {
+  return Object.values(SECTION_IDS[locale]);
+}
+
 export function getNavLinks(locale: Locale): NavLink[] {
   return SITE_CONTENT[locale].navLinks.map((link) => ({
-    href: withSectionHash(locale, link.sectionId),
+    href: withSectionHash(locale, getSectionId(locale, link.sectionKey)),
     label: link.label,
-    sectionId: link.sectionId
+    sectionId: getSectionId(locale, link.sectionKey)
   }));
 }
 

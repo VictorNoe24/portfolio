@@ -8,11 +8,10 @@ interface UseNavigationStateResult {
   toggleMobileMenu: () => void;
 }
 
-export function useNavigationState(): UseNavigationStateResult {
-  const sections = ["inicio", "sobre-mi", "experiencia", "proyectos", "habilidades", "educacion"];
+export function useNavigationState(sections: string[]): UseNavigationStateResult {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("inicio");
+  const [activeSection, setActiveSection] = useState(sections[0] ?? "");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +33,7 @@ export function useNavigationState(): UseNavigationStateResult {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sections]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((current) => !current);
