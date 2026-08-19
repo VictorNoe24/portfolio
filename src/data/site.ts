@@ -1,10 +1,151 @@
+import { getAlternateLocale, type Locale } from "../i18n/config";
+
 export interface NavLink {
   href: string;
   label: string;
   sectionId: string;
 }
 
+interface SiteContent {
+  description: string;
+  footer: {
+    backToTop: string;
+    blurb: string;
+    contactBody: string;
+    contactLabel: string;
+    contactSubject: string;
+    linksTitle: string;
+    moreTitle: string;
+  };
+  localeSwitcherLabel: string;
+  meta: {
+    homeDescription: string;
+    homeTitle: string;
+    projectsDescription: string;
+    projectsTitle: string;
+  };
+  nav: {
+    openMenu: string;
+    primaryLabel: string;
+    viewCv: string;
+  };
+  navLinks: Array<{ label: string; sectionId: string }>;
+}
+
+type PageKey = "home" | "projects";
+
+export interface AlternateLink {
+  href: string;
+  hreflang: string;
+}
+
 const BASE_PATH = import.meta.env.BASE_URL;
+const SITE_NAME = "Víctor Noé Flores Toledo";
+
+const SITE_CONTENT: Record<Locale, SiteContent> = {
+  es: {
+    description:
+      "Portafolio profesional de Víctor Noé Flores Toledo, desarrollador full stack enfocado en crear productos digitales modernos y accesibles.",
+    localeSwitcherLabel: "English",
+    meta: {
+      homeTitle: "Víctor Noé Flores Toledo | Full Stack Developer",
+      homeDescription:
+        "Portafolio profesional de Víctor Noé Flores Toledo, desarrollador full stack enfocado en crear productos digitales modernos y accesibles.",
+      projectsTitle: "Proyectos | Víctor Noé Flores Toledo",
+      projectsDescription:
+        "Catálogo completo de proyectos web, móviles e IoT desarrollados por Víctor Noé Flores Toledo."
+    },
+    nav: {
+      openMenu: "Abrir menú",
+      primaryLabel: "Principal",
+      viewCv: "Ver CV"
+    },
+    navLinks: [
+      { label: "Inicio", sectionId: "inicio" },
+      { label: "Sobre mí", sectionId: "sobre-mi" },
+      { label: "Experiencia", sectionId: "experiencia" },
+      { label: "Proyectos", sectionId: "proyectos" },
+      { label: "Habilidades", sectionId: "habilidades" },
+      { label: "Educación", sectionId: "educacion" }
+    ],
+    footer: {
+      backToTop: "Volver arriba",
+      blurb:
+        "Desarrollador Full Stack apasionado por crear soluciones digitales innovadoras y experiencias de usuario excepcionales.",
+      contactLabel: "Correo",
+      contactSubject: "Contacto profesional desde tu portafolio",
+      contactBody: `Hola Victor,
+
+Vi tu portafolio y me gustaría conversar contigo sobre una oportunidad.
+
+Motivo del contacto:
+[Vacante / Proyecto / Colaboración]
+
+Empresa o cliente:
+[Nombre]
+
+Detalles:
+[Cuéntame un poco más aquí]
+
+Quedo atento(a) a tu respuesta.
+
+Saludos,`,
+      linksTitle: "Enlaces",
+      moreTitle: "Más"
+    }
+  },
+  en: {
+    description:
+      "Professional portfolio of Víctor Noé Flores Toledo, a full stack developer focused on modern and accessible digital products.",
+    localeSwitcherLabel: "Español",
+    meta: {
+      homeTitle: "Víctor Noé Flores Toledo | Full Stack Developer",
+      homeDescription:
+        "Professional portfolio of Víctor Noé Flores Toledo, a full stack developer focused on modern and accessible digital products.",
+      projectsTitle: "Projects | Víctor Noé Flores Toledo",
+      projectsDescription:
+        "Full catalog of web, mobile, and IoT projects built by Víctor Noé Flores Toledo."
+    },
+    nav: {
+      openMenu: "Open menu",
+      primaryLabel: "Primary",
+      viewCv: "View resume"
+    },
+    navLinks: [
+      { label: "Home", sectionId: "inicio" },
+      { label: "About", sectionId: "sobre-mi" },
+      { label: "Experience", sectionId: "experiencia" },
+      { label: "Projects", sectionId: "proyectos" },
+      { label: "Skills", sectionId: "habilidades" },
+      { label: "Education", sectionId: "educacion" }
+    ],
+    footer: {
+      backToTop: "Back to top",
+      blurb:
+        "Full Stack Developer passionate about building innovative digital products and exceptional user experiences.",
+      contactLabel: "Email",
+      contactSubject: "Professional inquiry from your portfolio",
+      contactBody: `Hi Victor,
+
+I saw your portfolio and would love to talk with you about an opportunity.
+
+Reason for contact:
+[Role / Project / Collaboration]
+
+Company or client:
+[Name]
+
+Details:
+[Tell me a bit more here]
+
+Looking forward to hearing from you.
+
+Best regards,`,
+      linksTitle: "Links",
+      moreTitle: "More"
+    }
+  }
+};
 
 export function withBase(path: string): string {
   const normalizedBase = BASE_PATH === "/" ? "" : BASE_PATH.replace(/\/$/, "");
@@ -13,24 +154,64 @@ export function withBase(path: string): string {
   return `${normalizedBase}${normalizedPath}`;
 }
 
-export const HOME_PAGE_PATH = withBase("/");
-
-export function withSectionHash(sectionId: string): string {
-  return `${HOME_PAGE_PATH}#${sectionId}`;
+export function getHomePagePath(locale: Locale): string {
+  return withBase(locale === "en" ? "/en/" : "/");
 }
 
-export const navLinks: NavLink[] = [
-  { href: withSectionHash("inicio"), label: "Inicio", sectionId: "inicio" },
-  { href: withSectionHash("sobre-mi"), label: "Sobre mí", sectionId: "sobre-mi" },
-  { href: withSectionHash("experiencia"), label: "Experiencia", sectionId: "experiencia" },
-  { href: withSectionHash("proyectos"), label: "Proyectos", sectionId: "proyectos" },
-  { href: withSectionHash("habilidades"), label: "Habilidades", sectionId: "habilidades" },
-  { href: withSectionHash("educacion"), label: "Educación", sectionId: "educacion" }
-];
+export function getProjectsPagePath(locale: Locale): string {
+  return withBase(locale === "en" ? "/en/projects/" : "/proyectos/");
+}
 
-export const SITE_NAME = "Víctor Noé Flores Toledo";
-export const SITE_TITLE = "Víctor Noé Flores Toledo | Full Stack Developer";
-export const SITE_DESCRIPTION =
-  "Portafolio profesional de Víctor Noé Flores Toledo, desarrollador full stack enfocado en crear productos digitales modernos y accesibles.";
-export const CV_FILE_PATH = withBase("/documents/cv/victor-noe-flores-toledo-cv.pdf");
-export const PROJECTS_PAGE_PATH = withBase("/proyectos/");
+export function getCvFilePath(): string {
+  return withBase("/documents/cv/victor-noe-flores-toledo-cv.pdf");
+}
+
+export function withSectionHash(locale: Locale, sectionId: string): string {
+  return `${getHomePagePath(locale)}#${sectionId}`;
+}
+
+export function getNavLinks(locale: Locale): NavLink[] {
+  return SITE_CONTENT[locale].navLinks.map((link) => ({
+    href: withSectionHash(locale, link.sectionId),
+    label: link.label,
+    sectionId: link.sectionId
+  }));
+}
+
+export function getSiteContent(locale: Locale): SiteContent {
+  return SITE_CONTENT[locale];
+}
+
+export function getLocalizedPageMetadata(locale: Locale, page: PageKey) {
+  const content = SITE_CONTENT[locale].meta;
+
+  if (page === "projects") {
+    return {
+      title: content.projectsTitle,
+      description: content.projectsDescription
+    };
+  }
+
+  return {
+    title: content.homeTitle,
+    description: content.homeDescription
+  };
+}
+
+export function getSwitchLocalePath(locale: Locale, page: PageKey): string {
+  const alternateLocale = getAlternateLocale(locale);
+
+  return page === "projects"
+    ? getProjectsPagePath(alternateLocale)
+    : getHomePagePath(alternateLocale);
+}
+
+export function getAlternateLinks(page: PageKey): AlternateLink[] {
+  return [
+    { hreflang: "es", href: page === "projects" ? getProjectsPagePath("es") : getHomePagePath("es") },
+    { hreflang: "en", href: page === "projects" ? getProjectsPagePath("en") : getHomePagePath("en") },
+    { hreflang: "x-default", href: page === "projects" ? getProjectsPagePath("es") : getHomePagePath("es") }
+  ];
+}
+
+export { SITE_NAME };
