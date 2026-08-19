@@ -6,6 +6,12 @@ export interface NavLink {
   sectionId: string;
 }
 
+export interface LanguageOption {
+  code: "ES" | "EN";
+  flag: string;
+  label: string;
+}
+
 interface SiteContent {
   description: string;
   footer: {
@@ -194,6 +200,18 @@ export function getNavLinks(locale: Locale): NavLink[] {
     label: link.label,
     sectionId: link.sectionId
   }));
+}
+
+export function getCurrentLanguageOption(locale: Locale): LanguageOption {
+  return locale === "es"
+    ? { code: "ES", flag: "🇲🇽", label: "Español" }
+    : { code: "EN", flag: "🇺🇸", label: "English" };
+}
+
+export function getAlternateLanguageOption(locale: Locale): LanguageOption {
+  return locale === "es"
+    ? { code: "EN", flag: "🇺🇸", label: "Inglés" }
+    : { code: "ES", flag: "🇲🇽", label: "Spanish" };
 }
 
 export function getSiteContent(locale: Locale): SiteContent {

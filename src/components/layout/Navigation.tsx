@@ -1,9 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Languages, Menu, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { Locale } from "../../i18n/config";
-import { getCvFilePath, getNavLinks, getSiteContent, getHomePagePath } from "../../data/site";
+import {
+  getAlternateLanguageOption,
+  getCurrentLanguageOption,
+  getCvFilePath,
+  getNavLinks,
+  getSiteContent,
+  getHomePagePath
+} from "../../data/site";
 import { useNavigationState } from "../../hooks/useNavigationState";
 import { BrandLogo } from "../ui/BrandLogo";
 
@@ -21,6 +28,7 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
   const navLinks = getNavLinks(locale);
   const siteContent = getSiteContent(locale);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const languageMenuRef = useRef<HTMLDivElement | null>(null);
   const {
     activeSection,
     closeMobileMenu,
@@ -28,16 +36,33 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
     isScrolled,
     toggleMobileMenu
   } = useNavigationState();
-  const currentLanguage = useMemo(
-    () =>
-      locale === "es"
-        ? { code: "ES", flag: "🇲🇽", label: "Español" }
-        : { code: "EN", flag: "🇺🇸", label: "English" },
-    [locale]
-  );
-  const alternateLanguage = locale === "es"
-    ? { code: "EN", flag: "🇺🇸", label: "Inglés" }
-    : { code: "ES", flag: "🇲🇽", label: "Spanish" };
+  const currentLanguage = getCurrentLanguageOption(locale);
+  const alternateLanguage = getAlternateLanguageOption(locale);
+
+  useEffect(() => {
+    if (!isLanguageMenuOpen) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (languageMenuRef.current?.contains(target)) return;
+      setIsLanguageMenuOpen(false);
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLanguageMenuOpen]);
 
   return (
     <motion.header
@@ -95,7 +120,7 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <div className="relative">
+          <div ref={languageMenuRef} className="relative">
             <motion.button
               type="button"
               onClick={() => setIsLanguageMenuOpen((current) => !current)}
