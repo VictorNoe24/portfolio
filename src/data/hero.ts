@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 
 import type { Locale } from "../i18n/config";
 import { GitHubIcon, LinkedInIcon } from "../components/ui/icons";
-import { getCvFilePath, getHomePagePath, withBase } from "./site";
+import { getCvFilePath, getSectionId, withBase, withSectionHash } from "./site";
 
 export interface HeroSocialLink {
   href: string;
@@ -76,7 +76,7 @@ export function getHeroSocialLinks(locale: Locale): HeroSocialLink[] {
 export function getHeroActionLinks(locale: Locale): HeroActionLink[] {
   return [
     {
-      href: `${getHomePagePath(locale)}#proyectos`,
+      href: withSectionHash(locale, getSectionId(locale, "projects")),
       label: locale === "es" ? "Ver proyectos" : "View projects",
       variant: "primary"
     },

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 import type { Locale } from "../../i18n/config";
+import { getSectionId } from "../../data/site";
 import { HeroBackground } from "./HeroBackground";
 import { HeroContent } from "./HeroContent";
 import { HeroProfile } from "./HeroProfile";
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ locale }: HeroSectionProps) {
+  const sectionId = getSectionId(locale, "home");
   const sectionRef = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -22,7 +24,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section
       ref={sectionRef}
-      id="inicio"
+      id={sectionId}
       className="relative flex min-h-[calc(100svh-4rem)] items-center justify-center overflow-hidden lg:min-h-[calc(100svh-5rem)]"
     >
       <HeroBackground target={sectionRef} />
