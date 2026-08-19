@@ -17,6 +17,12 @@ interface SiteContent {
     linksTitle: string;
     moreTitle: string;
   };
+  languageSwitcher: {
+    ariaLabel: string;
+    changeLanguage: string;
+    current: string;
+    label: string;
+  };
   localeSwitcherLabel: string;
   meta: {
     homeDescription: string;
@@ -46,6 +52,12 @@ const SITE_CONTENT: Record<Locale, SiteContent> = {
   es: {
     description:
       "Portafolio profesional de Víctor Noé Flores Toledo, desarrollador full stack enfocado en crear productos digitales modernos y accesibles.",
+    languageSwitcher: {
+      ariaLabel: "Seleccionar idioma",
+      changeLanguage: "Cambiar idioma",
+      current: "Actual",
+      label: "Idioma"
+    },
     localeSwitcherLabel: "English",
     meta: {
       homeTitle: "Víctor Noé Flores Toledo | Full Stack Developer",
@@ -97,6 +109,12 @@ Saludos,`,
   en: {
     description:
       "Professional portfolio of Víctor Noé Flores Toledo, a full stack developer focused on modern and accessible digital products.",
+    languageSwitcher: {
+      ariaLabel: "Select language",
+      changeLanguage: "Change language",
+      current: "Current",
+      label: "Language"
+    },
     localeSwitcherLabel: "Español",
     meta: {
       homeTitle: "Víctor Noé Flores Toledo | Full Stack Developer",

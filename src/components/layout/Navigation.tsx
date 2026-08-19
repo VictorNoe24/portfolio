@@ -36,8 +36,8 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
     [locale]
   );
   const alternateLanguage = locale === "es"
-    ? { code: "EN", flag: "🇺🇸", label: "English" }
-    : { code: "ES", flag: "🇲🇽", label: "Español" };
+    ? { code: "EN", flag: "🇺🇸", label: "Inglés" }
+    : { code: "ES", flag: "🇲🇽", label: "Spanish" };
 
   return (
     <motion.header
@@ -104,7 +104,7 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
               whileTap={{ scale: 0.98 }}
               aria-haspopup="menu"
               aria-expanded={isLanguageMenuOpen}
-              aria-label="Seleccionar idioma"
+              aria-label={siteContent.languageSwitcher.ariaLabel}
             >
               <span className="text-base leading-none">{currentLanguage.flag}</span>
               <span>{currentLanguage.code}</span>
@@ -126,7 +126,7 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
                 >
                   <div className="mb-1 flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     <Languages className="h-3.5 w-3.5" />
-                    Idioma
+                    {siteContent.languageSwitcher.label}
                   </div>
 
                   <div className="rounded-xl bg-primary/8 px-3 py-3">
@@ -136,7 +136,9 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
                         <p className="text-sm font-semibold text-foreground">
                           {currentLanguage.label}
                         </p>
-                        <p className="text-xs text-muted-foreground">Actual</p>
+                        <p className="text-xs text-muted-foreground">
+                          {siteContent.languageSwitcher.current}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -150,7 +152,9 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
                     <span className="text-lg leading-none">{alternateLanguage.flag}</span>
                     <div>
                       <p className="font-medium">{alternateLanguage.label}</p>
-                      <p className="text-xs text-muted-foreground">Cambiar idioma</p>
+                      <p className="text-xs text-muted-foreground">
+                        {siteContent.languageSwitcher.changeLanguage}
+                      </p>
                     </div>
                   </motion.a>
                 </motion.div>
