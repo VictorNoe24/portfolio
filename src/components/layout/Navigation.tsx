@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Languages, Menu, X } from "lucide-react";
+import { useMemo, useState } from "react";
 
-import { CV_FILE_PATH, HOME_PAGE_PATH, navLinks } from "../../data/site";
+import type { Locale } from "../../i18n/config";
+import { getCvFilePath, getNavLinks, getSiteContent, getHomePagePath } from "../../data/site";
 import { useNavigationState } from "../../hooks/useNavigationState";
 import { BrandLogo } from "../ui/BrandLogo";
 
@@ -10,7 +12,15 @@ const HEADER_TRANSITION = {
   ease: [0.25, 0.46, 0.45, 0.94] as const
 };
 
-export function Navigation() {
+interface NavigationProps {
+  locale: Locale;
+  switchLocaleHref: string;
+}
+
+export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
+  const navLinks = getNavLinks(locale);
+  const siteContent = getSiteContent(locale);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const {
     activeSection,
     closeMobileMenu,
@@ -18,6 +28,16 @@ export function Navigation() {
     isScrolled,
     toggleMobileMenu
   } = useNavigationState();
+  const currentLanguage = useMemo(
+    () =>
+      locale === "es"
+        ? { code: "ES", flag: "🇲🇽", label: "Español" }
+        : { code: "EN", flag: "🇺🇸", label: "English" },
+    [locale]
+  );
+  const alternateLanguage = locale === "es"
+    ? { code: "EN", flag: "🇺🇸", label: "English" }
+    : { code: "ES", flag: "🇲🇽", label: "Español" };
 
   return (
     <motion.header
@@ -32,10 +52,10 @@ export function Navigation() {
     >
       <nav
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8"
-        aria-label="Principal"
+        aria-label={siteContent.nav.primaryLabel}
       >
         <motion.a
-          href={HOME_PAGE_PATH}
+          href={getHomePagePath(locale)}
           className="inline-flex max-w-[80px] items-center transition-opacity hover:opacity-90 sm:max-w-[220px] lg:max-w-none"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
@@ -74,24 +94,89 @@ export function Navigation() {
           })}
         </div>
 
-        <motion.a
-          href={CV_FILE_PATH}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_12px_30px_-18px_var(--color-primary)] transition-colors hover:bg-primary/90 lg:inline-flex"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4 }}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          Ver CV
-        </motion.a>
+        <div className="hidden items-center gap-3 lg:flex">
+          <div className="relative">
+            <motion.button
+              type="button"
+              onClick={() => setIsLanguageMenuOpen((current) => !current)}
+              className="inline-flex items-center gap-3 rounded-xl border border-border bg-card/80 px-3 py-2 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary/40 hover:bg-card"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              aria-haspopup="menu"
+              aria-expanded={isLanguageMenuOpen}
+              aria-label="Seleccionar idioma"
+            >
+              <span className="text-base leading-none">{currentLanguage.flag}</span>
+              <span>{currentLanguage.code}</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted-foreground transition-transform ${
+                  isLanguageMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </motion.button>
+
+            <AnimatePresence>
+              {isLanguageMenuOpen ? (
+                <motion.div
+                  className="absolute right-0 top-[calc(100%+0.75rem)] z-50 min-w-[180px] overflow-hidden rounded-2xl border border-border bg-card/95 p-2 shadow-2xl backdrop-blur-xl"
+                  initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  <div className="mb-1 flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    <Languages className="h-3.5 w-3.5" />
+                    Idioma
+                  </div>
+
+                  <div className="rounded-xl bg-primary/8 px-3 py-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg leading-none">{currentLanguage.flag}</span>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">
+                          {currentLanguage.label}
+                        </p>
+                        <p className="text-xs text-muted-foreground">Actual</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <motion.a
+                    href={switchLocaleHref}
+                    className="mt-2 flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    whileHover={{ x: 2 }}
+                    onClick={() => setIsLanguageMenuOpen(false)}
+                  >
+                    <span className="text-lg leading-none">{alternateLanguage.flag}</span>
+                    <div>
+                      <p className="font-medium">{alternateLanguage.label}</p>
+                      <p className="text-xs text-muted-foreground">Cambiar idioma</p>
+                    </div>
+                  </motion.a>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+
+          <motion.a
+            href={getCvFilePath()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_12px_30px_-18px_var(--color-primary)] transition-colors hover:bg-primary/90"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            {siteContent.nav.viewCv}
+          </motion.a>
+        </div>
 
         <motion.button
           type="button"
           className="inline-flex rounded-lg p-2 text-foreground lg:hidden"
-          aria-label="Abrir menu"
+          aria-label={siteContent.nav.openMenu}
           aria-expanded={isMobileMenuOpen}
           onClick={toggleMobileMenu}
           whileTap={{ scale: 0.92 }}
@@ -168,7 +253,7 @@ export function Navigation() {
               })}
 
               <motion.a
-                href={CV_FILE_PATH}
+                href={getCvFilePath()}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
@@ -178,7 +263,25 @@ export function Navigation() {
                   visible: { opacity: 1, x: 0 }
                 }}
               >
-                Ver CV
+                {siteContent.nav.viewCv}
+              </motion.a>
+
+              <motion.a
+                href={switchLocaleHref}
+                onClick={closeMobileMenu}
+                className="inline-flex w-full items-center justify-between rounded-xl border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0 }
+                }}
+              >
+                <span className="flex items-center gap-3">
+                  <span className="text-lg leading-none">{alternateLanguage.flag}</span>
+                  <span>{alternateLanguage.label}</span>
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {alternateLanguage.code}
+                </span>
               </motion.a>
             </motion.div>
           </motion.div>
