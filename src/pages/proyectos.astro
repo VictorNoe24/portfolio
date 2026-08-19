@@ -1,30 +1,5 @@
 ---
-import { ProjectsCatalog } from "../components/projects/ProjectsCatalog";
-import { SectionGlow } from "../components/ui/SectionGlow";
-import { projectsArchiveContent } from "../data/projects";
-import Layout from "../layouts/Layout.astro";
+import ProjectsPage from "../components/pages/ProjectsPage.astro";
 ---
 
-<Layout
-	title="Proyectos | Víctor Noé Flores Toledo"
-	description="Catálogo completo de proyectos web, móviles e IoT desarrollados por Víctor Noé Flores Toledo."
->
-	<section class="relative overflow-hidden border-b border-border py-20 lg:py-28">
-		<SectionGlow accent="chart-4" anchor="center" />
-		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div class="max-w-4xl">
-				<p class="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-					{projectsArchiveContent.eyebrow}
-				</p>
-				<h1 class="mt-4 text-balance text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl">
-					{projectsArchiveContent.title}
-				</h1>
-				<p class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-					{projectsArchiveContent.description}
-				</p>
-			</div>
-
-			<ProjectsCatalog client:load />
-		</div>
-	</section>
-</Layout>
+<ProjectsPage locale="es" />

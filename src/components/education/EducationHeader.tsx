@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-import { educationContent } from "../../data/education";
+import type { Locale } from "../../i18n/config";
+import { getEducationContent } from "../../data/education";
 
 interface EducationHeaderProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function EducationHeader({ isInView }: EducationHeaderProps) {
+export function EducationHeader({ isInView, locale }: EducationHeaderProps) {
+  const educationContent = getEducationContent(locale);
   return (
     <motion.div
       className="max-w-3xl"

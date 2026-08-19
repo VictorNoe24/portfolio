@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
 
-import {
-  certifications,
-  educationContent,
-  educationStats
-} from "../../data/education";
+import type { Locale } from "../../i18n/config";
+import { getCertifications, getEducationContent, getEducationStats } from "../../data/education";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
 import {
   educationCertificationItemVariants,
@@ -13,9 +10,13 @@ import {
 
 interface EducationKnowledgeProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function EducationKnowledge({ isInView }: EducationKnowledgeProps) {
+export function EducationKnowledge({ isInView, locale }: EducationKnowledgeProps) {
+  const certifications = getCertifications(locale);
+  const educationContent = getEducationContent(locale);
+  const educationStats = getEducationStats(locale);
   return (
     <motion.div
       className="space-y-6"

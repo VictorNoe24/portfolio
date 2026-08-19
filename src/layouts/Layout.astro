@@ -3,36 +3,54 @@ import "../styles/globals.css";
 import { Footer } from "../components/layout/Footer";
 import { Navigation } from "../components/layout/Navigation";
 import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
-import { SITE_DESCRIPTION, SITE_TITLE, withBase } from "../data/site";
+import type { Locale } from "../i18n/config";
+import { getLocalizedPageMetadata, withBase, type AlternateLink } from "../data/site";
 
 interface Props {
-  title?: string;
+  alternateLinks?: AlternateLink[];
+  canonicalPath?: string;
   description?: string;
+  locale: Locale;
+  switchLocaleHref: string;
+  title?: string;
 }
 
 const {
-  title = SITE_TITLE,
-  description = SITE_DESCRIPTION
+  alternateLinks = [],
+  canonicalPath = "/",
+  description,
+  locale,
+  switchLocaleHref,
+  title
 } = Astro.props as Props;
+
+const metadata = getLocalizedPageMetadata(locale, canonicalPath.includes("/proyectos") || canonicalPath.includes("/projects") ? "projects" : "home");
+const pageTitle = title ?? metadata.title;
+const pageDescription = description ?? metadata.description;
+const canonicalUrl = Astro.site ? new URL(canonicalPath, Astro.site).toString() : canonicalPath;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/webp" href={withBase("/images/logos/logo_vf_mini.webp")} />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
+		<meta name="description" content={pageDescription} />
+		<link rel="canonical" href={canonicalUrl} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={Astro.site ? new URL(link.href, Astro.site).toString() : link.href} />
+    ))}
+		<title>{pageTitle}</title>
 	</head>
 	<body class="min-h-screen bg-background text-foreground antialiased">
 		<ScrollProgressBar client:load />
-		<Navigation client:load />
+		<Navigation locale={locale} switchLocaleHref={switchLocaleHref} client:load />
 		<main class="min-h-screen pt-16 lg:pt-20">
 			<slot />
 		</main>
-		<Footer client:visible />
+		<Footer locale={locale} client:visible />
 	</body>
 </html>
 

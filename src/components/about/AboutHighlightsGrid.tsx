@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 
-import { aboutHighlights } from "../../data/about";
+import type { Locale } from "../../i18n/config";
+import { getAboutHighlights } from "../../data/about";
 import { aboutCardVariants, aboutContainerVariants } from "./about.motion";
 
 interface AboutHighlightsGridProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function AboutHighlightsGrid({ isInView }: AboutHighlightsGridProps) {
+export function AboutHighlightsGrid({ isInView, locale }: AboutHighlightsGridProps) {
+  const aboutHighlights = getAboutHighlights(locale);
   return (
     <motion.div
       className="grid gap-4 sm:grid-cols-2"
