@@ -1,0 +1,39 @@
+---
+import { AboutSection } from "../about/AboutSection";
+import { EducationSection } from "../education/EducationSection";
+import { ExperienceSection } from "../experience/ExperienceSection";
+import { HeroSection } from "../hero/HeroSection";
+import { ProjectsSection } from "../projects/ProjectsSection";
+import { SkillsSection } from "../skills/SkillsSection";
+import Layout from "../../layouts/Layout.astro";
+import type { Locale } from "../../i18n/config";
+import {
+  getAlternateLinks,
+  getHomePagePath,
+  getLocalizedPageMetadata,
+  getSwitchLocalePath
+} from "../../data/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props as Props;
+const metadata = getLocalizedPageMetadata(locale, "home");
+---
+
+<Layout
+  locale={locale}
+  title={metadata.title}
+  description={metadata.description}
+  canonicalPath={getHomePagePath(locale)}
+  alternateLinks={getAlternateLinks("home")}
+  switchLocaleHref={getSwitchLocalePath(locale, "home")}
+>
+  <HeroSection locale={locale} client:load />
+  <AboutSection locale={locale} client:visible />
+  <ExperienceSection locale={locale} client:visible />
+  <ProjectsSection locale={locale} client:visible />
+  <SkillsSection locale={locale} client:visible />
+  <EducationSection locale={locale} client:visible />
+</Layout>

@@ -1,39 +1,27 @@
 import { ArrowUp, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
+import type { Locale } from "../../i18n/config";
 import { GitHubIcon, LinkedInIcon } from "../ui/icons";
 import { BrandLogo } from "../ui/BrandLogo";
-import { HOME_PAGE_PATH, SITE_NAME, navLinks } from "../../data/site";
+import { getHomePagePath, getNavLinks, getSiteContent, SITE_NAME } from "../../data/site";
 import { useFooterState } from "../../hooks/useFooterState";
 
 const CONTACT_EMAIL = "noeflo60@gmail.com";
-const CONTACT_SUBJECT = "Contacto profesional desde tu portafolio";
-const CONTACT_BODY = `Hola Victor,
 
-Vi tu portafolio y me gustaría conversar contigo sobre una oportunidad.
+interface FooterProps {
+  locale: Locale;
+}
 
-Motivo del contacto:
-[Vacante / Proyecto / Colaboración]
-
-Empresa o cliente:
-[Nombre]
-
-Detalles:
-[Cuéntame un poco más aquí]
-
-Quedo atento(a) a tu respuesta.
-
-Saludos,`;
-
-const contactMailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(CONTACT_SUBJECT)}&body=${encodeURIComponent(CONTACT_BODY)}`;
-
-const socialLinks = [
-  { icon: GitHubIcon, href: "https://github.com/VictorNoe24", label: "GitHub" },
-  { icon: LinkedInIcon, href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5", label: "LinkedIn" },
-  { icon: Mail, href: contactMailtoHref, label: "Correo" }
-];
-
-export function Footer() {
+export function Footer({ locale }: FooterProps) {
+  const siteContent = getSiteContent(locale);
+  const navLinks = getNavLinks(locale);
+  const contactMailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(siteContent.footer.contactSubject)}&body=${encodeURIComponent(siteContent.footer.contactBody)}`;
+  const socialLinks = [
+    { icon: GitHubIcon, href: "https://github.com/VictorNoe24", label: "GitHub" },
+    { icon: LinkedInIcon, href: "https://www.linkedin.com/in/victor-noe-flores-toledo-3a30441a5", label: "LinkedIn" },
+    { icon: Mail, href: contactMailtoHref, label: siteContent.footer.contactLabel }
+  ];
   const { currentYear, footerRef, isInView } = useFooterState();
 
   return (
@@ -47,7 +35,7 @@ export function Footer() {
             transition={{ duration: 0.5 }}
           >
             <motion.a
-              href={HOME_PAGE_PATH}
+              href={getHomePagePath(locale)}
               className="inline-flex items-center transition-opacity hover:opacity-90"
               whileHover={{ scale: 1.03 }}
             >
@@ -55,8 +43,7 @@ export function Footer() {
             </motion.a>
 
             <p className="mt-4 max-w-md text-lg leading-8 text-muted-foreground">
-              Desarrollador Full Stack apasionado por crear soluciones digitales
-              innovadoras y experiencias de usuario excepcionales.
+              {siteContent.footer.blurb}
             </p>
 
             <motion.div
@@ -75,8 +62,8 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  target={link.label === "Correo" ? undefined : "_blank"}
-                  rel={link.label === "Correo" ? undefined : "noreferrer"}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
                   aria-label={link.label}
                   className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-muted-foreground transition-all duration-200 hover:bg-primary/10 hover:text-primary"
                   variants={{
@@ -97,7 +84,7 @@ export function Footer() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="mb-4 text-lg font-semibold text-foreground">Enlaces</h2>
+            <h2 className="mb-4 text-lg font-semibold text-foreground">{siteContent.footer.linksTitle}</h2>
             <ul className="space-y-3">
               {navLinks.slice(0, 4).map((link, index) => (
                 <motion.li
@@ -123,7 +110,7 @@ export function Footer() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="mb-4 text-lg font-semibold text-foreground">Más</h2>
+            <h2 className="mb-4 text-lg font-semibold text-foreground">{siteContent.footer.moreTitle}</h2>
             <ul className="space-y-3">
               {navLinks.slice(4).map((link, index) => (
                 <motion.li
@@ -156,11 +143,11 @@ export function Footer() {
           </p>
 
           <motion.a
-            href={HOME_PAGE_PATH}
+            href={getHomePagePath(locale)}
             className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             whileHover={{ y: -2 }}
           >
-            Volver arriba
+            {siteContent.footer.backToTop}
             <motion.span
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}

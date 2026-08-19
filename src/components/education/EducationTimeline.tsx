@@ -1,14 +1,18 @@
 import { GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { educationContent, educationItems } from "../../data/education";
+import type { Locale } from "../../i18n/config";
+import { getEducationContent, getEducationItems } from "../../data/education";
 import { EducationTimelineCard } from "./EducationTimelineCard";
 
 interface EducationTimelineProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function EducationTimeline({ isInView }: EducationTimelineProps) {
+export function EducationTimeline({ isInView, locale }: EducationTimelineProps) {
+  const educationContent = getEducationContent(locale);
+  const educationItems = getEducationItems(locale);
   return (
     <motion.div
       className="space-y-6"

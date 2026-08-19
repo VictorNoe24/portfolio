@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-import { skillsContent } from "../../data/skills";
+import type { Locale } from "../../i18n/config";
+import { getSkillsContent } from "../../data/skills";
 
 interface SkillsHeaderProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function SkillsHeader({ isInView }: SkillsHeaderProps) {
+export function SkillsHeader({ isInView, locale }: SkillsHeaderProps) {
+  const skillsContent = getSkillsContent(locale);
   return (
     <motion.div
       className="max-w-3xl"

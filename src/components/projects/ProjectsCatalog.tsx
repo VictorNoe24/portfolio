@@ -1,14 +1,21 @@
 import { AnimatePresence } from "framer-motion";
 import { startTransition, useDeferredValue, useMemo, useState } from "react";
 
-import { projectCategories, projects } from "../../data/projects";
+import type { Locale } from "../../i18n/config";
+import { getProjectCategories, getProjects } from "../../data/projects";
 import type { Project } from "../../data/projects";
 import { useProjectGallery } from "../../hooks/useProjectGallery";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
 
-export function ProjectsCatalog() {
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
+interface ProjectsCatalogProps {
+  locale: Locale;
+}
+
+export function ProjectsCatalog({ locale }: ProjectsCatalogProps) {
+  const projectCategories = getProjectCategories(locale);
+  const projects = getProjects(locale);
+  const [selectedCategory, setSelectedCategory] = useState(projectCategories[0]);
   const deferredCategory = useDeferredValue(selectedCategory);
   const {
     closeProject,
@@ -21,10 +28,10 @@ export function ProjectsCatalog() {
   } = useProjectGallery();
 
   const filteredProjects = useMemo(() => {
-    if (deferredCategory === "Todos") return projects;
+    if (deferredCategory === projectCategories[0]) return projects;
 
     return projects.filter((project) => project.category === deferredCategory);
-  }, [deferredCategory]);
+  }, [deferredCategory, projectCategories, projects]);
 
   return (
     <>
@@ -59,8 +66,9 @@ export function ProjectsCatalog() {
             key={project.id}
             project={project}
             onClick={() => openProject(project)}
-            featured={project.featured && deferredCategory === "Todos"}
+            featured={project.featured && deferredCategory === projectCategories[0]}
             index={index}
+            locale={locale}
           />
         ))}
       </div>
@@ -68,6 +76,7 @@ export function ProjectsCatalog() {
       <AnimatePresence>
         {selectedProject ? (
           <ProjectModal
+            locale={locale}
             project={selectedProject}
             onClose={closeProject}
             currentImageIndex={currentImageIndex}

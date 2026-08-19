@@ -1,7 +1,9 @@
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
+import type { Locale } from "../../i18n/config";
 import type { Project } from "../../data/projects";
+import { getProjectsUiCopy } from "../../data/projects";
 import {
   projectsTechItemVariants,
   projectsTechVariants
@@ -11,6 +13,7 @@ import { ProjectPreview } from "./ProjectPreview";
 interface ProjectCardProps {
   featured?: boolean;
   index?: number;
+  locale: Locale;
   onClick: () => void;
   project: Project;
 }
@@ -18,10 +21,12 @@ interface ProjectCardProps {
 export function ProjectCard({
   featured = false,
   index = 0,
+  locale,
   onClick,
   project
 }: ProjectCardProps) {
   const Icon = project.icon;
+  const ui = getProjectsUiCopy(locale);
 
   if (featured) {
     return (
@@ -55,7 +60,7 @@ export function ProjectCard({
               transition={{ delay: 0.3 }}
             >
               <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                Proyecto Destacado
+                {ui.featuredBadge}
               </span>
             </motion.div>
           </div>
@@ -104,7 +109,7 @@ export function ProjectCard({
             </motion.div>
 
             <motion.div className="flex items-center gap-2 text-sm font-medium text-primary" whileHover={{ x: 5 }}>
-              <span>Ver detalles</span>
+              <span>{ui.viewDetails}</span>
               <ExternalLink className="h-4 w-4" />
             </motion.div>
           </div>

@@ -7,7 +7,9 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import type { Locale } from "../../i18n/config";
 import type { Project } from "../../data/projects";
+import { getProjectsUiCopy } from "../../data/projects";
 import { ButtonLink } from "../ui/Button";
 import {
   projectModalListItemVariants,
@@ -20,6 +22,7 @@ import { ProjectPreview } from "./ProjectPreview";
 interface ProjectModalProps {
   currentImageIndex: number;
   goToImage: (index: number) => void;
+  locale: Locale;
   nextImage: () => void;
   onClose: () => void;
   previousImage: () => void;
@@ -29,6 +32,7 @@ interface ProjectModalProps {
 export function ProjectModal({
   currentImageIndex,
   goToImage,
+  locale,
   nextImage,
   onClose,
   previousImage,
@@ -36,6 +40,7 @@ export function ProjectModal({
 }: ProjectModalProps) {
   const hasImages = project.images.length > 0;
   const activeImage = hasImages ? project.images[currentImageIndex] : null;
+  const ui = getProjectsUiCopy(locale);
 
   return (
     <motion.div
@@ -48,7 +53,7 @@ export function ProjectModal({
         type="button"
         className="absolute inset-0 cursor-default"
         onClick={onClose}
-        aria-label="Cerrar modal"
+        aria-label={ui.modalClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -67,7 +72,7 @@ export function ProjectModal({
           className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 transition-colors hover:bg-background"
           whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
-          aria-label="Cerrar"
+          aria-label={ui.modalClose}
         >
           <X className="h-5 w-5" />
         </motion.button>
@@ -103,7 +108,7 @@ export function ProjectModal({
                     className="absolute left-4 top-1/2 rounded-full bg-background/80 p-2 transition-colors hover:bg-background"
                     whileHover={{ scale: 1.1, x: -2 }}
                     whileTap={{ scale: 0.9 }}
-                    aria-label="Imagen anterior"
+                    aria-label={ui.modalPreviousImage}
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </motion.button>
@@ -113,7 +118,7 @@ export function ProjectModal({
                     className="absolute right-4 top-1/2 rounded-full bg-background/80 p-2 transition-colors hover:bg-background"
                     whileHover={{ scale: 1.1, x: 2 }}
                     whileTap={{ scale: 0.9 }}
-                    aria-label="Siguiente imagen"
+                    aria-label={ui.modalNextImage}
                   >
                     <ChevronRight className="h-5 w-5" />
                   </motion.button>
@@ -129,7 +134,7 @@ export function ProjectModal({
                         }`}
                         whileHover={{ scale: 1.5 }}
                         animate={index === currentImageIndex ? { scale: 1.2 } : { scale: 1 }}
-                        aria-label={`Ir a imagen ${index + 1}`}
+                        aria-label={ui.modalGoToImage(index + 1)}
                       />
                     ))}
                   </div>
@@ -178,7 +183,7 @@ export function ProjectModal({
           <p className="mb-6 text-muted-foreground">{project.longDescription}</p>
 
           <div className="mb-6">
-            <h4 className="mb-3 text-sm font-semibold text-foreground">Funcionalidades principales</h4>
+            <h4 className="mb-3 text-sm font-semibold text-foreground">{ui.modalFeaturesTitle}</h4>
             <motion.ul className="grid gap-2 sm:grid-cols-2" initial="hidden" animate="visible" variants={projectModalListVariants}>
               {project.highlights.map((highlight) => (
                 <motion.li
@@ -194,7 +199,7 @@ export function ProjectModal({
           </div>
 
           <div className="mb-6">
-            <h4 className="mb-3 text-sm font-semibold text-foreground">Tecnologías utilizadas</h4>
+            <h4 className="mb-3 text-sm font-semibold text-foreground">{ui.modalTechnologiesTitle}</h4>
             <motion.div className="flex flex-wrap gap-2" initial="hidden" animate="visible" variants={projectsTechVariants}>
               {project.technologies.map((technology) => (
                 <motion.span
@@ -219,7 +224,7 @@ export function ProjectModal({
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <ButtonLink href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  Ver Proyecto
+                  {ui.modalViewProject}
                 </ButtonLink>
               </motion.div>
             ) : null}
@@ -232,7 +237,7 @@ export function ProjectModal({
                   variant="outline"
                 >
                   <FolderGit2 className="mr-2 h-4 w-4" />
-                  Ver código
+                  {ui.modalSourceCode}
                 </ButtonLink>
               </motion.div>
             ) : null}

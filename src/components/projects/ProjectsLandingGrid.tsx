@@ -1,15 +1,19 @@
-import { projects } from "../../data/projects";
+import type { Locale } from "../../i18n/config";
+import { getProjects } from "../../data/projects";
 import type { Project } from "../../data/projects";
 import { ProjectsArchivePanel } from "./ProjectsArchivePanel";
 import { ProjectCard } from "./ProjectCard";
 
 interface ProjectsLandingGridProps {
+  locale: Locale;
   onSelectProject: (project: Project) => void;
 }
 
 export function ProjectsLandingGrid({
+  locale,
   onSelectProject
 }: ProjectsLandingGridProps) {
+  const projects = getProjects(locale);
   const featuredProject = projects.find((project) => project.featured);
   const supportingProjects = projects
     .filter((project) => !project.featured)
@@ -23,6 +27,7 @@ export function ProjectsLandingGrid({
             project={featuredProject}
             onClick={() => onSelectProject(featuredProject)}
             featured
+            locale={locale}
           />
         ) : null}
 
@@ -33,13 +38,14 @@ export function ProjectsLandingGrid({
               project={project}
               onClick={() => onSelectProject(project)}
               index={index}
+              locale={locale}
             />
           ))}
         </div>
       </div>
 
       <div className="lg:sticky lg:top-28 lg:self-start">
-        <ProjectsArchivePanel />
+        <ProjectsArchivePanel locale={locale} />
       </div>
     </div>
   );

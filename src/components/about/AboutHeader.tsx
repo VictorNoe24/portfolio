@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-import { aboutContent } from "../../data/about";
+import type { Locale } from "../../i18n/config";
+import { getAboutContent } from "../../data/about";
 
 interface AboutHeaderProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function AboutHeader({ isInView }: AboutHeaderProps) {
+export function AboutHeader({ isInView, locale }: AboutHeaderProps) {
+  const aboutContent = getAboutContent(locale);
   return (
     <motion.div
       className="max-w-3xl"

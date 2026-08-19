@@ -1,12 +1,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+import type { Locale } from "../../i18n/config";
 import { HeroBackground } from "./HeroBackground";
 import { HeroContent } from "./HeroContent";
 import { HeroProfile } from "./HeroProfile";
 import { HeroScrollIndicator } from "./HeroScrollIndicator";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  locale: Locale;
+}
+
+export function HeroSection({ locale }: HeroSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -27,11 +32,11 @@ export function HeroSection() {
         style={{ y: contentY }}
       >
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <HeroContent />
-          <HeroProfile />
+          <HeroContent locale={locale} />
+          <HeroProfile locale={locale} />
         </div>
 
-        <HeroScrollIndicator />
+        <HeroScrollIndicator locale={locale} />
       </motion.div>
     </section>
   );

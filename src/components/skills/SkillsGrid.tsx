@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 
-import { skillCategories } from "../../data/skills";
+import type { Locale } from "../../i18n/config";
+import { getSkillCategories } from "../../data/skills";
 import { SkillsCategoryCard } from "./SkillsCategoryCard";
 import { skillsCardVariants, skillsGridVariants } from "./skills.motion";
 
 interface SkillsGridProps {
   isInView: boolean;
+  locale: Locale;
 }
 
-export function SkillsGrid({ isInView }: SkillsGridProps) {
+export function SkillsGrid({ isInView, locale }: SkillsGridProps) {
+  const skillCategories = getSkillCategories(locale);
   const gridItemClassName =
     skillCategories.length === 4
       ? "lg:col-span-6"
