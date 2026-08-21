@@ -133,7 +133,13 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
               aria-expanded={isLanguageMenuOpen}
               aria-label={siteContent.languageSwitcher.ariaLabel}
             >
-              <span className="text-base leading-none">{currentLanguage.flag}</span>
+              <img
+                src={currentLanguage.flagSrc}
+                alt={currentLanguage.flagAlt}
+                className="h-5 w-6 rounded-[0.4rem] object-cover shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
+                loading="eager"
+                decoding="async"
+              />
               <span>{currentLanguage.code}</span>
               <ChevronDown
                 className={`h-4 w-4 text-muted-foreground transition-transform ${
@@ -158,7 +164,13 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
 
                   <div className="rounded-xl bg-primary/8 px-3 py-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg leading-none">{currentLanguage.flag}</span>
+                      <img
+                        src={currentLanguage.flagSrc}
+                        alt={currentLanguage.flagAlt}
+                        className="h-6 w-8 rounded-[0.55rem] object-cover shadow-[0_4px_14px_rgba(0,0,0,0.22)]"
+                        loading="eager"
+                        decoding="async"
+                      />
                       <div>
                         <p className="text-sm font-semibold text-foreground">
                           {currentLanguage.label}
@@ -176,7 +188,13 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
                     whileHover={{ x: 2 }}
                     onClick={() => setIsLanguageMenuOpen(false)}
                   >
-                    <span className="text-lg leading-none">{alternateLanguage.flag}</span>
+                    <img
+                      src={alternateLanguage.flagSrc}
+                      alt={alternateLanguage.flagAlt}
+                      className="h-6 w-8 rounded-[0.55rem] object-cover shadow-[0_4px_14px_rgba(0,0,0,0.22)]"
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div>
                       <p className="font-medium">{alternateLanguage.label}</p>
                       <p className="text-xs text-muted-foreground">
@@ -307,7 +325,13 @@ export function Navigation({ locale, switchLocaleHref }: NavigationProps) {
                 }}
               >
                 <span className="flex items-center gap-3">
-                  <span className="text-lg leading-none">{alternateLanguage.flag}</span>
+                  <img
+                    src={alternateLanguage.flagSrc}
+                    alt={alternateLanguage.flagAlt}
+                    className="h-5 w-6 rounded-[0.4rem] object-cover shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span>{alternateLanguage.label}</span>
                 </span>
                 <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
