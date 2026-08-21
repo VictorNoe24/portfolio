@@ -16,7 +16,8 @@ export type SectionKey =
 
 export interface LanguageOption {
   code: "ES" | "EN";
-  flag: string;
+  flagAlt: string;
+  flagSrc: string;
   label: string;
 }
 
@@ -239,14 +240,34 @@ export function getNavLinks(locale: Locale): NavLink[] {
 
 export function getCurrentLanguageOption(locale: Locale): LanguageOption {
   return locale === "es"
-    ? { code: "ES", flag: "🇲🇽", label: "Español" }
-    : { code: "EN", flag: "🇺🇸", label: "English" };
+    ? {
+        code: "ES",
+        flagAlt: "Bandera de México",
+        flagSrc: "https://twemoji.maxcdn.com/2/svg/1f1f2-1f1fd.svg",
+        label: "Español"
+      }
+    : {
+        code: "EN",
+        flagAlt: "Flag of the United States",
+        flagSrc: "https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg",
+        label: "English"
+      };
 }
 
 export function getAlternateLanguageOption(locale: Locale): LanguageOption {
   return locale === "es"
-    ? { code: "EN", flag: "🇺🇸", label: "Inglés" }
-    : { code: "ES", flag: "🇲🇽", label: "Spanish" };
+    ? {
+        code: "EN",
+        flagAlt: "Flag of the United States",
+        flagSrc: "https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg",
+        label: "Inglés"
+      }
+    : {
+        code: "ES",
+        flagAlt: "Bandera de México",
+        flagSrc: "https://twemoji.maxcdn.com/2/svg/1f1f2-1f1fd.svg",
+        label: "Spanish"
+      };
 }
 
 export function getSiteContent(locale: Locale): SiteContent {
