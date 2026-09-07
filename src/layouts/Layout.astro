@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import { Footer } from "../components/layout/Footer";
 import { Navigation } from "../components/layout/Navigation";
+import { CursorHalo } from "../components/ui/CursorHalo";
 import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
 import type { Locale } from "../i18n/config";
 import { getLocalizedPageMetadata, withBase, type AlternateLink } from "../data/site";
@@ -45,6 +46,7 @@ const canonicalUrl = Astro.site ? new URL(canonicalPath, Astro.site).toString() 
 		<title>{pageTitle}</title>
 	</head>
 	<body class="min-h-screen bg-background text-foreground antialiased">
+		<CursorHalo client:load />
 		<ScrollProgressBar client:load />
 		<Navigation locale={locale} switchLocaleHref={switchLocaleHref} client:load />
 		<main class="min-h-screen pt-16 lg:pt-20">
